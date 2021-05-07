@@ -1,0 +1,19 @@
+technique to load the database, save it after logout
+
+
+users >>> id is_doc name email pass
+        ///> id is_doc name email pass
+            id c
+            id a
+courses >>> id doc_id code name
+        ///> id doc_id code name
+            user_id u
+            ass_id a
+ass >>> id doc_id course_id \n question
+        ///> id doc_id course_id \n question
+            user_id grade \n ans
+
+    A <= b      means A has B;
+
+    doctors <= courses <= ass
+    users <=> courses <= ass
