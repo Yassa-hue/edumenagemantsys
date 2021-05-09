@@ -1,4 +1,0 @@
-1 2 3   this is ass num 1
-1 -1   thi is ans1
-2 3   this is ans2
-17 -1 yassa anser
