@@ -110,7 +110,7 @@ class ass{
 private:
     int id, doctor_id, course_id;
     string path, question;
-    bool removed, edited;
+    bool removed, edited, created;
     vector <pair<pii, string>> users; // user_id grade answer
 
 
@@ -143,26 +143,24 @@ public:
 
     }
 
-    ass(int _doctor_id, int _course_id, string _question)
-    : id(getid()), doctor_id(_doctor_id), course_id(_course_id), question(std::move(_question)), edited(false), removed(false){
+    ass(int _course_id, string _question) // creating assignment
+    : id(getid()), doctor_id(userid), course_id(_course_id), question(std::move(_question)), edited(false), removed(false), created(false){
         if (is_doctor) {
             path = "./database/ass/" + to_string(id) + ".txt";
-            ofstream file(path);
-
-            file << id << ' ' << doctor_id << ' ' << course_id << ' ' << question << '\n';
-
-            file.close();
+            created = true;
+            cout << "******* You successfully added an assignment with the data: id(" <<
+                 id << "), course(" << course_id << "), question(" << question << ") *********" << endl;
+        } else {
+            cout << "******* Sorry you are not a doctor, you are not allowed to create an assignment ********" << endl;
         }
 
     }
 
-    ass(int _id): id(_id), removed(false), edited(false) {
+    ass(int _id): id(_id), removed(false), edited(false), created(false) {
         path = "./database/ass/" + to_string(id) + ".txt";
         string line;
         ifstream file(path);
 
-//        cout << path << boolalpha << ' ' << file.is_open() << endl;
-//
         file >> id >> doctor_id >> course_id;
         getline(file, question);
 
@@ -182,22 +180,31 @@ public:
 
 
 
-    void print() {
-        if (removed)
+    void print_all() {
+        if (removed || !is_doctor)
             return;
 
-        cout << users.size() << ";; " << id << ' ' << doctor_id << ' ' << course_id << '\n' << " >> " << question << endl;
+        cout << "******* You are at assignment with the data: id(" <<
+             id << "), course(" << course_id << "), doctor id(" << doctor_id << "), question(" << question << ") *********" << endl;
 
         fff(i, users.size()) {
             bool g = (users[i].first.second == -1);
 
-            cout << users[i].first.first << ' ';
+            cout << "user id(" << users[i].first.first << "), grade :";
 
-            if (g) cout << "notgarded";
+            if (g) cout << " notgarded";
             else cout << users[i].first.second;
 
-            cout << ' ' << users[i].second << endl;
+            cout << ", answer: " << users[i].second << endl;
         }
+    }
+
+    void print_con() {
+        if (removed)
+            return;
+
+        cout << "******* You are at assignment with the data: id(" <<
+             id << "), course(" << course_id << "), doctor id(" << doctor_id << "), question(" << question << ") *********" << endl;
     }
 
 
@@ -270,6 +277,15 @@ public:
 
 
     ~ass () {
+        if (created && !removed) {
+            ofstream file(path);
+            file << id << ' ' << doctor_id << ' ' << course_id << ' ' << question << '\n';
+            file.close();
+
+            ofstream file2("./database/assignments.txt");
+            file << id << ' ' << doctor_id << ' ' << course_id << ' ' << question << '\n';
+            file.close();
+        }
         if (removed) {
           // remove the file ... ulter student file
             remove(path.c_str());
@@ -292,18 +308,26 @@ public:
 };
 
 
+
+
+
+
+
 class course {
 private:
     int id, doctor_id, code;
     string name, path;
     vector <ass> assinments;
+    vi users;
+    bool edited, removed, created;
 public:
     course () : id(-1){
         //
     }
 
 
-    course (int _id) : id(_id){
+    course (int _id)
+        : id(_id), created(false), edited(false), removed(false) {
         path = "./database/courses/" + to_string(id) + ".txt";
         ifstream file(path);
         string line;
@@ -317,9 +341,38 @@ public:
 
             if (c == 'a')
                 assinments.emplace_back(ass(_id));
+            if (is_doctor && c == 'u') // revise this;
+                users.push_back(_id);
 
         }
 
+    }
+
+    course (int _code, string _name) // creating a course
+        : id(getid()), doctor_id(userid), code(_code), name(std::move(_name)),  created(false), edited(false), removed(false) {
+        if (is_doctor) {
+            path = "./database/courses/" + to_string(id) + ".txt";
+            created = true;
+
+            cout << "******* You successfully added a course with the data: id(" <<
+            id << "), code(" << code << "), name(" << name << ") *********" << endl;
+        } else {
+            cout << "******* Sorry you are not a doctor, you are not allowed to create a course ********" << endl;
+        }
+    }
+
+
+
+    ~course() {
+        if (created) {
+            ofstream file(path);
+            file << id << ' ' << doctor_id << ' ' << code << ' ' << name << '\n';
+            file.close();
+
+            ofstream file2("./database/courses.txt");
+            file2 << id << ' ' << doctor_id << ' ' << code << ' ' << name << '\n';
+            file2.close();
+        }
     }
 
 
@@ -328,8 +381,13 @@ public:
 
 
 class user{
+    int id;
+public:
+    user(int _id) : id(_id){
 
+    }
 };
+
 
 
 
