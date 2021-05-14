@@ -1,4 +1,0 @@
-2 1 1234 electronics
-3 a
-5 a
-6 a
