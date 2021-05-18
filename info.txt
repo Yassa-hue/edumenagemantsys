@@ -1,10 +1,9 @@
 technique to load the database, save it after logout
 
 
-users >>> id is_doc name email pass
-        ///> id is_doc name email pass
-            id c
-            id a
+users >>> id is_doc email pass name
+        ///> id is_doc email pass name
+            id //=> course_id
 courses >>> id doc_id code name
         ///> id doc_id code name
             user_id u
@@ -17,3 +16,6 @@ ass >>> id doc_id course_id \n question
 
     doctors <= courses <= ass
     users <=> courses <= ass
+
+
+    implement show grades & inroll out
