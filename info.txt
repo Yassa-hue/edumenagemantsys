@@ -1,14 +1,14 @@
 technique to load the database, save it after logout
 
 
-users >>> id is_doc email pass name
+users >>> id is_doc email pass name {}
         ///> id is_doc email pass name
             id //=> course_id
-courses >>> id doc_id code name
+courses >>> id doc_id code name []
         ///> id doc_id code name
             user_id u
             ass_id a
-ass >>> id doc_id course_id \n question
+ass >>> id doc_id course_id \n question ()
         ///> id doc_id course_id \n question
             user_id grade \n ans
 
