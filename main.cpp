@@ -33,12 +33,19 @@ const ull oo = 1e9 +5;
 const int mx = 1e3 +5;
 
 
-
+/*
+ * userid is the id of the user that is using the app now
+ * is_doctor is true if the user is a doctor, else false
+ */
 int userid; bool is_doctor; vi pal;
 
 
 
 void append_to (string path, string line) {
+    /*
+     * this function takes a path to a file and add line to the end of it
+     */
+
     ofstream file(path, (ios::out | ios::app));
     file << line;
     file << '\n';
@@ -47,9 +54,21 @@ void append_to (string path, string line) {
 
 
 int getid () {
-    int id; string path{"./database/id.txt"};
-    ifstream id_file(path); id_file >> id; id_file.close();
-    fstream _uid(path, (ios::out | ios::trunc)); _uid << id+1; _uid.close();
+    /*
+     * this function returns a new id from the file id.txt in the database
+     */
+
+    int id;
+    string path{"./database/id.txt"};
+
+    ifstream id_file(path);
+    id_file >> id;
+    id_file.close();
+
+    fstream _uid(path, (ios::out | ios::trunc));
+    _uid << (id+1);
+    _uid.close();
+
     return id;
 }
 
@@ -71,10 +90,14 @@ int get_id (string _pass, int _id, int _index) {
 
 
 
-
-
-
 bool remove_from(string path, int id, bool skip) {
+    /*
+     * this function takes the path to a file and id
+     * it removes the line that starts with id == the given id
+     * it skip == true : it skips the first line
+     */
+
+
     ifstream file(path); string line; int _id; vs lines; bool found{};
 
     if (skip) {                      // to skip the first line
@@ -108,104 +131,72 @@ bool remove_from(string path, int id, bool skip) {
 }
 
 
+void output(string s) {
+    cout << "             *********** " << s << " ***********" << endl;
+}
+
+void input() {
+    cout << " ===> ?) ";
+}
+
+void chioce(string s) {
+    cout << "       " << s << endl;
+}
+
 class ass{
-private:
+
+    /*
+     * this is assignment class
+     * each assignment has a question and doctor id that created the course id that belongs to
+     * it reads the data from the database when we create an object and modify it when it is deleted
+     */
+protected:
     int id, doctor_id, course_id;
     string path, question;
-    bool removed, edited, created;
-    vector <pair<pii, string>> users; // user_id grade answer
+    bool removed, edited;
+//    vector <pair<pii, string>> users; // user_id grade answer
 
 
     static bool g(pair<pii, string> &p1, pair<pii, string> &p2) {
         return (p1.first.first < p2.first.first);
     }
 
-    int get_user_index(int _id) { // binary search for user index given user id in log(n) time
-        int big{}, nd = int(users.size()-1), piv;
-
-        while (big <= nd) {
-            piv = (big+nd)/2;
-
-            if (users[piv].first.first == _id)
-                return piv;
-            else if (users[piv].first.first > _id)
-                nd = piv-1;
-            else
-                big = piv+1;
-
-        }
-
-        return -1;
-    }
-
-
 
 public:
-    ass() : id(-1) , created(false), edited(false), removed(false) {
+    ass() : id(-1) , edited(false), removed(false) {
         pal.push_back(id);
     }
 
-    ass(int _course_id, string _question) // creating assignment
-    : id(getid()), doctor_id(userid), course_id(_course_id), question(std::move(_question)), edited(false), removed(false), created(false){
-
-        if (is_doctor) {
-            path = "./database/ass/" + to_string(id) + ".txt";
-            created = true;
-            cout << "******* You successfully added an assignment with the data: id(" <<
-                 id << "), course(" << course_id << "), question(" << question << ") *********" << endl;
-        } else {
-            cout << "******* Sorry you are not a doctor, you are not allowed to create an assignment ********" << endl;
-        }
-
+    ass(int _id) : id(_id) , edited(false), removed(false) {
         pal.push_back(id);
-    }
-
-    ass(int _id): id(_id), removed(false), edited(false), created(false) {
 
         path = "./database/ass/" + to_string(id) + ".txt";
-        string line;
         ifstream file(path);
-
         file >> id >> doctor_id >> course_id;
+
+        file.ignore(1000, '\n');
         getline(file, question);
 
-        while (file.peek() != EOF) {
-            int user_id, grade; string ans;
-            file >> user_id >> grade;
-            getline(file, ans);
-
-            if(is_doctor || (!is_doctor && user_id == userid))
-                users.emplace_back(make_pair(user_id, grade), ans);
-        }
-
         file.close();
-
-        sort(users.begin(), users.end(), g);
-
-        pal.push_back(id);
     }
 
-    void print_all() {
-        if (removed || !is_doctor || id == -1)
-            return;
+    ass(int _doctor_id, int _course_id, string _question) // creating assignment
+    : id(getid()), doctor_id(_doctor_id), course_id(_course_id), question(std::move(_question)), edited(false), removed(false){
+        /*
+         * this create a new assignment using the course id and a question if the user is a doctor
+         */
+        path = "./database/ass/" + to_string(id) + ".txt";
+        cout << "******* You successfully added an assignment with the data: id(" <<
+             id << "), course(" << course_id << "), question(" << question << ") *********" << endl;
 
-        print_con();
-
-        if (is_doctor) {
-            fff(i, users.size()) {
-                bool g = (users[i].first.second == -1);
-
-                cout << "user id(" << users[i].first.first << "), grade :";
-
-                if (g) cout << " notgarded";
-                else cout << users[i].first.second;
-
-                cout << ", answer: " << users[i].second << endl;
-            }
-        }
+        pal.push_back(id);
     }
 
     void print_con() {
+        /*
+         * this function showes the assignment shortly
+         */
+
         if (removed || id == -1)
             return;
 
@@ -213,50 +204,15 @@ public:
              id << "), course(" << course_id << "), doctor id(" << doctor_id << "), question(" << question << ") *********" << endl;
     }
 
-    bool put_grade(int _user_id, int _grade) { // return true if the operation succeeded else false
-        int index = get_user_index(_user_id);
-
-        if (index == -1 || users[index].first.second >= 0 || userid != doctor_id || _grade < 0 || removed || !is_doctor)
-            return false;
-
-        users[index].first.second = _grade;
-        edited = true;
-
-        return true;
-    }
-
-    bool delete_ass() {
-        if (removed || !is_doctor || userid != doctor_id)
-            return false;
-
-        removed = true;
-        return true;
-    }
-
-    bool is_answered(int _user_id) {
-        return (get_user_index(_user_id) != -1);
-    }
-
     bool is_removed() {
+        /*
+         * checks if the assignment is removed
+         */
         return removed;
     }
 
-    bool answer_question (string _answer) { // not complete
-        if (is_answered(userid) || is_doctor)
-            return false;
-
-        users.emplace_back(make_pair(make_pair(userid, -1), _answer));
-        edited = true;
-
-        return edited;
-    };
-
     int get_id() const {
         return id;
-    }
-
-    int get_doctor_id() {
-        return doctor_id;
     }
 
     int get_doc_id () const {
@@ -267,97 +223,249 @@ public:
         return course_id;
     }
 
+    ~ass() {
+        //
+    }
+};
+
+
+class student_ass : public ass {
+private:
+    int grade;
+    string answer;
+
+public:
+    student_ass() : ass() {
+
+    }
+
+    student_ass (int _id) : ass(_id), grade(-1), answer() {
+        ifstream file(path);
+        string line;
+        while (getline(file, line)) {
+            istringstream s(line);
+            s >> _id;
+            if (_id == userid) {
+                s >> grade;
+                getline(file, answer);
+                break;
+            }
+            getline(file, line);
+        }
+
+        file.close();
+
+        print_con();
+    }
+
+    bool answer_question(string _answer) {
+        if (grade == -1){
+            answer = std::move(_answer);
+            edited = true;
+            grade = 0;
+
+            cout << "******** You finished this assignment with the anwser: " << answer << " ********" << endl;
+
+            return edited;
+        }
+
+        cout << "******** Sorry You already have one submit chance, please call the instructor ********" << endl;
+
+        return false;
+    }
+
+    int get_my_grade() {
+        return grade;
+    }
+
+    string get_my_answer() {
+        return answer;
+    }
+
+    ~student_ass() {
+        if (edited) {
+            append_to(path, to_string(id) + ' ' + to_string(grade));
+            append_to(path, answer);
+        }
+    }
+
+};
+
+
+
+
+class doctor_ass : public ass {
+private:
+    vector <pair<pii, string>> answers;
+    bool created, edited;
+
+    int get_user_index(int _id) { // binary search for user index given user id in log(n) time
+        /*
+         * this function takes the id of an user and return it's index in the useres vector
+         * if the user is not found it return -1
+         * it uses leanier search
+         */
+
+        fff(i, answers.size()) {
+            if (answers[i].first.first == _id)
+                return i;
+        }
+
+        return -1;
+    }
+public:
+    doctor_ass () : ass() {
+
+    }
+
+    doctor_ass (int _id) : ass(_id), edited(false), created(false) {
+        ifstream file(path);
+        string line;
+        getline(file, line);
+        getline(file, line);
+
+        while (file.peek() != EOF) {
+            getline(file, line);
+
+            istringstream s(line);
+            pair<pii, string> temp;
+
+            s >> temp.first.first >> temp.first.second;
+            getline(file, temp.second);
+
+            answers.push_back(temp);
+        }
+
+        file.close();
+
+        print_all();
+    }
+
+    doctor_ass(int _doctor_id, int _course_id, string _question) : ass(_doctor_id, _course_id, _question), created(true), edited(false){
+        /*
+         * this create a new assignment using the course id and a question if the user is a doctor
+         */
+//        print_all();
+    }
+
+    void print_all() {
+        /*
+         * this function showes the assignment
+         */
+
+        if (removed || !is_doctor || id == -1)
+            return;
+
+        print_con();
+
+        if (is_doctor) {
+            fff(i, answers.size()) {
+                bool g = (answers[i].first.second == -1);
+
+                cout << "user id(" << answers[i].first.first << "), grade :";
+
+                if (g) cout << " notgraded ";
+                else cout << answers[i].first.second;
+
+                cout << ", answer: " << answers[i].second << endl;
+            }
+        }
+    }
+
+    bool put_grade(int _user_id, int _grade) {
+        /*
+         * this function puts a grade by a doctor on users answer to an assignment
+         * returns -1 if it fails
+         */
+        int index = get_user_index(_user_id);
+
+        if (index == -1)
+            return false;
+
+        answers[index].first.second = _grade;
+        edited = true;
+
+        return true;
+    }
+
+    bool delete_ass() {
+        /*
+         * it deletes the assignment
+         * doctors only can dalete assignment
+         */
+        if (removed || !is_doctor || userid != doctor_id)
+            return false;
+
+        removed = true;
+        return true;
+    }
+
+    bool is_answered(int _user_id) {
+        /*
+         * this function takes the user id and return true if the user answers the assignment , else return false
+         */
+        return (get_user_index(_user_id) != -1);
+    }
+
     pair<pii, string> get_ans(int _user_id) {
+
         int index = get_user_index(_user_id);
 
         if (index == -1 || !is_doctor)
             return make_pair(make_pair(-1, -1), "");
         else
-            return users[index];
+            return answers[index];
     }
 
-    ass operator > (ass &_ass) {
-        return id > _ass.get_id();
-    }
+    ~doctor_ass() {
+        pal.push_back(0-id);
+        if (removed) {
+            remove(path.c_str());
+            remove_from("./database/assignments.txt", id, false);
+            remove_from("./database/courses/" + to_string(course_id) + ".txt", id, false);
 
-    ass operator < (ass &_ass) {
-        return id < _ass.get_id();
-    }
-
-    int get_my_grade() {
-        if (is_doctor)
-            return -1;
-        return ((!users.empty()) ? users[0].first.second : -2);
-    }
-
-    void remove_my_answers() {
-        if (is_doctor) {
-            cout << "******** Sorry You are NOT allowed *********" << endl;
             return;
         }
 
-        for (auto &i: users)
-            i.first.first = -1;
+        if (created || edited) {
+            if (created) {
+                ofstream file(path);
+                file << id << ' ' << doctor_id << ' ' << course_id << '\n' << question << '\n';
+                file.close();
 
-        edited = true;
-    }
+                append_to("./database/assignments.txt",
+                          to_string(id) + ' ' + to_string(doctor_id) + ' ' + to_string(course_id));
 
-    ~ass () {
-        pal.push_back(0-id);
-        if (created && !removed) {
-            ofstream file(path);
-            file << id << ' ' << doctor_id << ' ' << course_id << ' ' << question << '\n';
-            file.close();
+                append_to("./database/courses/" + to_string(course_id) + ".txt",
+                          to_string(id) + " a");
+            }
 
-            append_to("./database/assignments.txt",
-                    to_string(id) + ' ' + to_string(doctor_id) + ' ' + to_string(course_id) + ' ' + question);
-
-            append_to("./database/courses/" + to_string(course_id) + ".txt",
-                      to_string(id) + " a");
-//            ofstream file2("./database/assignments.txt", ios::app);
-//            file2 << id << ' ' << doctor_id << ' ' << course_id << ' ' << question << '\n';
-//            file2.close();
-        }
-        if (removed) {
-          // remove the file ... ulter student file
-            remove(path.c_str());
-//            remove_from("./database/users/" + to_string(doctor_id) + ".txt", id, true);
-
-//            fff (i, users.size())
-//                remove_from("./database/users/" + to_string(users[i].first.first) + ".txt", id, true);
-            remove_from("./database/assignments.txt", id, false);
-
-//            cout << " +++++++++ " << boolalpha << remove_from("./database/courses/" + to_string(course_id) + ".txt", id, true) << endl;
-        } else if (edited) {
             fstream file(path, (ios::out | ios::trunc));
 
-            file << id << ' ' << doctor_id << ' ' << course_id << ' ' << question << '\n';
+            file << id << ' ' << doctor_id << ' ' << course_id << '\n' << question << '\n';
 
-            fff(i, users.size()) {
-                if (users[i].first.first != -1)
-                    file << users[i].first.first << ' ' << users[i].first.second << ' ' << users[i].second << '\n';
+            fff(i, answers.size()) {
+                if (answers[i].first.first != -1)
+                    file << answers[i].first.first << ' ' << answers[i].first.second << '\n' << answers[i].second << '\n';
             }
 
             file.close();
+
         }
     }
+
+
 };
 
 
 
 
 
-
-
 class course {
-private:
-    int id, doctor_id, code, ass_size;
+protected:
+    int id, doctor_id, code;
     string name, path;
-    vector <ass *> assinments;
-    vi users;
     bool edited, removed, created;
-
-
 
 
 public:
@@ -366,29 +474,16 @@ public:
     }
 
     course (int _id)
-        : id(_id), created(false), edited(false), removed(false), ass_size(0) {
+        : id(_id), created(false), edited(false), removed(false){
 
         path = "./database/courses/" + to_string(id) + ".txt";
-        assinments.resize(10);
 
         ifstream file(path);
         string line;
 
         file >> id >> doctor_id >> code >> name;
 
-        while (getline(file, line)) { // please add users vector
-            istringstream s(line); char c;
 
-            s >> _id >> c;
-
-            if (c == 'a') {
-                ass *_ass = new ass(_id);
-                assinments[ass_size] = _ass;
-                ass_size ++;
-            } if (is_doctor && c == 'u') // revise this;
-                users.push_back(_id);
-
-        }
 
         file.close();
         pal.push_back(id);
@@ -397,74 +492,17 @@ public:
 
     }
 
-    course (int _code, string _name) // creating a course
-        : id(getid()), doctor_id(userid), code(_code), name(std::move(_name)),  created(false), edited(false), removed(false), ass_size(0) {
-        if (is_doctor) {
-            path = "./database/courses/" + to_string(id) + ".txt";
-            created = true;
-            assinments.resize(10);
+    course (int _doctor_id,int _code, string _name) // creating a course
+        : id(getid()), doctor_id(_doctor_id), code(_code), name(std::move(_name)),  created(false), edited(false), removed(false) {
+        path = "./database/courses/" + to_string(id) + ".txt";
+        created = true;
 
-            cout << "******* You successfully added a course with the data: id(" <<
-            id << "), code(" << code << "), name(" << name << ") *********" << endl;
-        } else {
-            cout << "******* Sorry you are not a doctor, you are not allowed to create a course ********" << endl;
-        }
+        cout << "******* You successfully added a course with the data: id(" <<
+             id << "), code(" << code << "), name(" << name << ") *********" << endl;
 
         pal.push_back(id);
     }
 
-    void creat_ass(string _question) {
-        if (is_doctor) {
-            ass * _ass = new ass(id, std::move(_question));
-            assinments[ass_size] = _ass;
-            edited = true;
-            ass_size++;
-        } else
-            cout << "******** sorry you are not allowed to create an assinment ********" << endl;
-    }
-
-    ass* get_ass(int _id) {
-        int big {}, nd = ass_size-1, piv;
-
-        while (big <= nd) {
-            piv = (nd + big)/2;
-
-            if (assinments[piv]->get_id() == _id)
-                return assinments[piv];
-            else if (assinments[piv]->get_id() > _id)
-                nd = piv-1;
-            else
-                big = piv+1;
-        }
-
-        return nullptr;
-    }
-
-    bool remove_ass(int _id) {
-        ass *_ass = get_ass(_id);
-
-        if (!is_doctor || _ass == nullptr || _ass->is_removed() || _ass->get_doctor_id() != userid || _ass->get_id() == -1) {
-            cout << "******* Sorry you can not remove this assignment ********" << endl;
-            return false;
-        }
-
-        _ass->delete_ass();
-        cout << "****** You successfuly removed assigment with id(" << _ass->get_id() << ") *********" << endl;
-
-        edited = true;
-        return edited;
-    }
-
-    bool remove_course() {
-        if (removed || !is_doctor || userid != doctor_id) {
-            cout << "******* Sorry you can not remove this course ********" << endl;
-            return false;
-        }
-
-        removed = true;
-        cout << "****** You successfuly removed a course with id(" << id << ") *********" << endl;
-        return removed;
-    }
 
     void print_conc() {
         if (removed) {
@@ -473,30 +511,8 @@ public:
         }
 
         cout << "=> this is course: " << name << ", id(" << id << "), code(" << code << "), doctor id(" << doctor_id << ")" << endl;
-        cout << "      it has " << ass_size << " assignments and " << users.size() << " users enrolled." << endl;
     }
 
-    void print_all() {
-        print_conc();
-
-        if (removed)
-            return;
-
-        if (ass_size > 0) {
-            cout << "           *** assignments ***" << endl;
-            fff(i, ass_size) {
-                if (!assinments[i]->is_removed())
-                    assinments[i]->print_con();
-            }
-        }
-
-        if (!users.empty() && is_doctor) {
-            cout << "           *** users ***" << endl;
-            fff(i, users.size())
-                cout << "user id(" << users[i] << ")" << endl;
-        }
-
-    }
 
     bool is_removed() {
         return removed;
@@ -510,33 +526,85 @@ public:
         return name;
     }
 
-    bool inroll() {
-        if (!is_doctor) {
-            users.push_back(userid);
-            edited = true;
+    ~course() {
+        pal.push_back(0-id);
 
-            return true;
+
+    }
+
+
+};
+
+
+
+class student_course: public course {
+private:
+    vector<student_ass*> asses;
+    bool inrollin, inrollout;
+
+
+public:
+
+    student_course(): course(), inrollout(false), inrollin(false) {
+        //
+    }
+
+    student_course(int _id): course(_id), inrollout(false), inrollin(false) {
+        ifstream file(path);
+        string line;
+
+        getline(file, line);
+        while (getline(file, line)) { // please add users vector
+            istringstream s(line); char c;
+
+            s >> _id >> c;
+
+            if (c == 'a')
+                asses.push_back(new student_ass(_id));
+
         }
 
-        return false;
+        file.close();
+    }
+
+    student_ass* get_ass(int _id) {
+        int big {}, nd = asses.size()-1, piv;
+
+        while (big <= nd) {
+            piv = (nd + big)/2;
+
+            if (asses[piv]->get_id() == _id)
+                return asses[piv];
+            else if (asses[piv]->get_id() > _id)
+                nd = piv-1;
+            else
+                big = piv+1;
+        }
+
+        return nullptr;
+    }
+
+    bool inroll_in() {
+        if (!inrollin) {
+            inrollin = true;
+            cout << "******** You successfully inrolled in course " << id << ": " << name << " ********" << endl;
+        }
+
+        cout << "******** You already in course " << id << ": " << name << " ********" << endl;
+
+        return inrollin;
     }
 
     void show_grades() {
-        if (is_doctor) {
-            cout << "******** Sorry students only *********" << endl;
-            return;
-        }
-
-
         cout << "******* Your grades in course : " << name << " ********" << endl;
 
-        fff(i, ass_size) {
-            if (assinments[i] == nullptr)
+        fff(i, asses.size()) {
+            if (asses[i] == nullptr)
                 continue;
 
-            int _grade = assinments[i]->get_my_grade();
+            int _grade = asses[i]->get_my_grade();
 
-            cout << "       ===> At assignment of id (" << assinments[i]->get_id() << "): ";
+            cout << "       ===> At assignment of id (" << asses[i]->get_id() << "): ";
 
             if (_grade == -1)
                 cout << "Not graded yet" << endl;
@@ -548,43 +616,158 @@ public:
     }
 
     void inroll_out() {
-        if (is_doctor) {
-            cout << "********* Sorry you are NOT allowed *********" << endl;
-            return;
+//        fff(i, asses.size())
+//            asses[i]->remove_my_answers();
+
+        if (!inrollin) {
+            inrollin = true;
+            cout << "******** You successfully inrolled in course " << id << ": " << name << " ********" << endl;
         }
 
-        fff(i, ass_size)
-            assinments[i]->remove_my_answers();
+        cout << "******** You already out of course " << id << ": " << name << " ********" << endl;
+    }
 
-        fff(i, users.size()) {
-            if (users[i] == userid) {
-                users[i] = -1;
-                break;
+    void print_all() {
+        if (inrollout)
+            return;
+
+        print_conc();
+
+        if (!asses.empty()) {
+            cout << "           *** assignments ***" << endl;
+            fff(i, asses.size()) {
+                if (!asses[i]->is_removed())
+                    asses[i]->print_con();
             }
         }
+    }
 
+    ~student_course() {
+        if (inrollin)
+            append_to(path, to_string(userid) + " u");
+
+        if (inrollout)
+            remove_from(path, userid, true);
+
+        for (student_ass* _ass : asses)
+            delete _ass;
+    }
+};
+
+
+class doctor_course: public course {
+private:
+    vector<doctor_ass*> asses;
+    vi students;
+public:
+
+    doctor_course(): course() {
+        //
+    }
+
+    doctor_course(int _id): course(_id) {
+        ifstream file(path);
+        string line;
+
+
+        getline(file, line);
+        while (getline(file, line)) { // please add users vector
+            istringstream s(line); char c;
+
+            s >> _id >> c;
+
+            if (c == 'a')
+                asses.push_back(new doctor_ass(_id));
+            if (is_doctor && c == 'u') // revise this;
+                students.push_back(_id);
+
+        }
+
+        file.close();
+    }
+
+    doctor_course(int _id, int _code, string _name) : course(_id, _code, _name) {
+
+    }
+
+    void creat_ass(int _doctor_id, string _question) {
+        asses.push_back(new doctor_ass(_doctor_id, id, std::move(_question)));
         edited = true;
     }
 
-    ~course() {
-        pal.push_back(0-id);
-        if (created && !removed) {
-            ofstream file(path);
-            file << id << ' ' << doctor_id << ' ' << code << ' ' << name << '\n';
-            file.close();
+    bool remove_ass(int _id) {
+        doctor_ass *_ass = get_ass(_id);
 
-            append_to("./database/courses.txt",
-                      to_string(id) + ' ' + to_string(doctor_id) + ' ' + to_string(code) + ' ' + name);
-        } else if (removed) {
-            // remove assignments related to this course with
-            fff(i, assinments.size()) {
-                if (!assinments[i]->is_removed())
-                    assinments[i]->delete_ass();
+        if (!is_doctor || _ass == nullptr || _ass->is_removed() || _ass->get_id() == -1) {
+            cout << "******* Sorry you can not remove this assignment ********" << endl;
+            return false;
+        }
+
+        _ass->delete_ass();
+        cout << "****** You successfuly removed assigment with id(" << _ass->get_id() << ") *********" << endl;
+
+        edited = true;
+        return edited;
+    }
+
+    doctor_ass* get_ass(int _id) {
+        int big {}, nd = asses.size()-1, piv;
+
+        while (big <= nd) {
+            piv = (nd + big)/2;
+
+            if (asses[piv]->get_id() == _id)
+                return asses[piv];
+            else if (asses[piv]->get_id() > _id)
+                nd = piv-1;
+            else
+                big = piv+1;
+        }
+
+        return nullptr;
+    }
+
+    bool remove_course() {
+        if (removed || !is_doctor || userid != doctor_id) {
+            cout << "******* Sorry you can not remove this course ********" << endl;
+            return false;
+        }
+
+        removed = true;
+        cout << "****** You successfuly removed a course with id(" << id << ") *********" << endl;
+        return removed;
+    }
+
+    void print_all() {
+        if (removed)
+            return;
+        print_conc();
+
+        if (!asses.empty()) {
+            cout << "           *** assignments ***" << endl;
+            for(auto a: asses) {
+                if (a != nullptr && !a->is_removed())
+                    a->print_con();
             }
+        }
 
-            // remove it from the users recoreds
-//            fff(i, users.size())
-//                remove_from("./database/users/" + to_string(users[i]) + ".txt", id, true);
+        if (!students.empty() ) {
+            cout << "           *** users ***" << endl;
+            fff(i, students.size())
+                cout << "user id(" << students[i] << ")" << endl;
+        }
+
+    }
+
+    ~doctor_course() {
+        pal.push_back(0-id);
+
+        if (removed) {
+            // remove assignments related to this course with
+            fff(i, asses.size()) {
+                if (asses[i] != nullptr && !asses[i]->is_removed())
+                    asses[i]->delete_ass();
+            }
 
             // remove it from courses file
             remove_from("./database/courses.txt", id, false);
@@ -592,40 +775,47 @@ public:
             //remove the file
             remove(path.c_str());
 
-        } else if (edited) {
-            fstream file(path, (ios::out | ios::trunc));
+        } else if (created || edited) {
+            if (created) {
+                ofstream file(path);
+                file << id << ' ' << doctor_id << ' ' << code << ' ' << name << '\n';
+                file.close();
+
+                append_to("./database/courses.txt",
+                          to_string(id) + ' ' + to_string(doctor_id) + ' ' + to_string(code) + ' ' + name);
+            }
+            ofstream file(path, ios::app);
             file << id << ' ' << doctor_id << ' ' << code << ' ' << name << '\n';
 
-            fff(i, ass_size) {
-                if (assinments[i] == nullptr)
+            fff(i, asses.size()) {
+                if (asses[i] == nullptr)
                     continue;
-                if (!assinments[i]->is_removed())
-                    file << assinments[i]->get_id() << " a\n";
+                if (!asses[i]->is_removed())
+                    file << asses[i]->get_id() << " a\n";
             }
 
-            fff(i, users.size()) {
-                if (users[i] != -1)
-                    file << users[i] << " u\n";
+            fff(i, students.size()) {
+                if (students[i] != -1)
+                    file << students[i] << " u\n";
             }
 
             file.close();
+
         }
 
-        for (auto _ass : assinments)
-                delete _ass;
+        for (doctor_ass* _ass : asses)
+            delete _ass;
 
     }
-
-
 };
 
 
 
 class user{
-    string path, email, pass, name;
+protected:
+    string path, email, password, name;
     bool created, removed, edited;
-    vector <course*> courses;
-    int courses_size;
+    int id;
 
     void init_user () {
         ifstream file(path);
@@ -638,8 +828,8 @@ class user{
             s >> _id;
             cout << "look course id ==+++ " << _id << endl;
             cours = new course(_id);
-            courses[courses_size] = cours;
-            courses_size ++;
+//            courses[courses_size] = cours;
+//            courses_size ++;
         }
 
         file.close();
@@ -652,27 +842,26 @@ class user{
     }
 
 public:
-    user () :path(string()), created(false), removed(false), edited(false), courses_size(0) {
+    user () :path(string()), created(false), removed(false), edited(false) {
         userid = -1;
         pal.push_back(userid);
     }
 
-    user(string _email, string _pass) : path(string()) , created(false), removed(false), edited(false), courses_size(0) { // log in
+    user(string _email, string _pass) : path(string()) , created(false), removed(false), edited(false) { // log in
 
-        int id, _is_doctor; userid = -1;
+        int _id, _is_doctor; userid = -1;
         ifstream file("./database/users.txt");
         string line;
 
         while (getline(file, line)) {
             istringstream s(line);
-            s >> id >> _is_doctor >> email >> pass;
+            s >> id >> _is_doctor >> email >> password;
 
-            if (email == _email && pass == _pass) {
+            if (email == _email && password == _pass) {
                 s >> name;
-                userid = id;
+                userid = userid = id ;
                 is_doctor = (bool)_is_doctor;
                 path = "./database/users/" + to_string(userid) + ".txt";
-                courses.resize(10);
 
                 init_user();
                 break;
@@ -689,14 +878,13 @@ public:
         pal.push_back(userid);
     }
 
-    user(string _email, string _pass, string _name, bool _is_doc) : path(string()) , created(true), removed(false), edited(false) , courses_size(0){ // sign in
+    user(string _email, string _pass, string _name, bool _is_doc) : path(string()) , created(true), removed(false), edited(false){ // sign in
         if (validate_email(_email)) {
-            userid = getid();
+            id = userid = getid();
             is_doctor = _is_doc;
             email = _email;
-            pass = _pass;
+            password = _pass;
             name = _name;
-            courses.resize(10);
             path = "./database/users/" + to_string(userid) + ".txt";
 
             cout << "****** You successfully created an " << (is_doctor? "doctor" : "student") << " account with the data: id("
@@ -713,22 +901,68 @@ public:
     }
 
     bool logout() {
-        if (userid == -1) {
+        if (userid == -1 || id == -1) {
             cout << "******** Sorry an error happened please try again ********" << endl;
 
             return false;
         }
 
-        userid = -1;
+        userid = id = -1;
         is_doctor = false;
 
         cout << "******** You loged out ********" << endl;
         return true;
     }
 
+    int get_id() {
+        return id;
+    }
+
+    ~user () {
+
+    }
+};
+
+
+
+
+class doctor : public user{
+private:
+    vector <doctor_course*> courses;
+
+public:
+    doctor() :user() {
+
+    }
+
+    doctor(string _email, string _password): user(_email, _password) {
+        ifstream file(path);
+        string line; getline(file, line);
+        int _id;
+
+        while (getline(file, line)) {
+            istringstream s(line);
+            s >> _id;
+            courses.push_back(new doctor_course(_id));
+        }
+
+        file.close();
+    }
+
+    doctor(string _email, string _password, string _name): user(_email, _password, _name, true) {
+
+    }
+
+    bool create_course(int _code, string _name) {
+        courses.push_back(new doctor_course(id, _code, _name));
+        edited = true;
+
+        return edited;
+    }
+
     void print_courses() {
-        cout << "********* You have " << courses_size << " courses *********" << endl;
-        fff(i, courses_size) {
+        cout << "********* You have " << courses.size() << " courses *********" << endl;
+        fff(i, courses.size()) {
             if (courses[i] == nullptr)
                 continue;
             if (!courses[i]->is_removed())
@@ -737,8 +971,8 @@ public:
         }
     }
 
-    course *get_course(int _id) {
-        int big {}, nd = courses_size-1, piv;
+    doctor_course *get_course(int _id) {
+        int big {}, nd = courses.size()-1, piv;
 
         while (big <= nd) {
             piv = (big+nd)/2;
@@ -753,11 +987,77 @@ public:
         return nullptr;
     }
 
-    void show_avilable_courses() {
-        if (is_doctor) {
-            cout << "******** Sorry , for students accounts only ********" << endl;
-            return;
+    ~doctor () {
+        pal.push_back(0-userid);
+        if (removed) { // not finished
+            if (created)
+                return;
+
+            fff(i, courses.size()) {
+                if (courses[i] != nullptr && !courses[i]->is_removed())
+                    courses[i]->remove_course();
+            }
+
+            remove_from("./database/users.txt", userid, false);
+
+            remove(path.c_str());
+
+        } else if (created || edited) {
+            if (created) {
+
+                append_to("./database/users.txt",
+                          to_string(userid) + ' ' + to_string(is_doctor) + ' ' + email + ' ' + password + ' ' + name);
+
+            }
+
+            ofstream file(path);
+            file << (to_string(userid) + ' ' + to_string(is_doctor) + ' ' + email + ' ' + password + ' ' + name + '\n');
+
+            fff(i, courses.size()) {
+                if (courses[i] == nullptr)
+                    continue;
+                if (!courses[i]->is_removed())
+                    file << courses[i]->get_id() << '\n';
+            }
+
+            file.close();
+
         }
+
+        for(doctor_course *c: courses)
+            delete c;
+    }
+};
+
+class student : public user{
+private:
+    vector <student_course*> courses;
+
+public:
+
+    student() :user() {
+
+    }
+
+    student (string _email, string _password): user(_email, _password) {
+        ifstream file(path);
+        string line; getline(file, line);
+        int _id;
+
+        while (getline(file, line)) {
+            istringstream s(line);
+            s >> _id;
+            courses.push_back(new student_course(_id));
+        }
+
+        file.close();
+    }
+
+    student (string _email, string _password, string _name): user(_email, _password, _name, false) {
+
+    }
+
+    void show_avilable_courses() {
         ifstream file("./database/courses.txt");
         string line;
 
@@ -765,17 +1065,35 @@ public:
 
         while (getline(file, line))
             cout << "=> " << line << endl;
+
+
+        file.close();
+    }
+
+    student_course *get_course(int _id) {
+        int big {}, nd = courses.size()-1, piv;
+
+        while (big <= nd) {
+            piv = (big+nd)/2;
+            if (courses[piv]->get_id() == _id)
+                return courses[piv];
+            else if (courses[piv]->get_id() > _id)
+                nd = piv-1;
+            else if (courses[piv]->get_id() < _id)
+                big = piv+1;
+        }
+
+        return nullptr;
     }
 
     bool inroll_in(int _id) {
-        course *c = get_course(_id);
+        student_course *c = get_course(_id);
 
         if (c == nullptr && !is_doctor) {
-            c = new course(_id);
+            c = new student_course(_id);
 
-            if (c->inroll()) {
-                courses[courses_size] = c;
-                courses_size++;
+            if (c->inroll_in()) {
+                courses.push_back(c);
                 //sort
                 edited = true;
 
@@ -792,7 +1110,7 @@ public:
 
     }
 
-    bool inroll_out(course *_course) {
+    bool inroll_out(student_course *_course) {
         cout << "******** You enrolling out of course : " << _course->get_name() << " *********" << endl;
 
         _course->inroll_out();
@@ -802,50 +1120,44 @@ public:
         return true;
     }
 
-    bool create_course(int _code, string _name) {
-        if (is_doctor) {
-            course *crs = new course(_code, _name);
-            courses[courses_size] = crs;
-            courses_size ++;
-            edited = true;
-
-            return edited;
+    void print_courses() {
+        cout << "********* You have " << courses.size() << " courses *********" << endl;
+        fff(i, courses.size()) {
+            if (courses[i] == nullptr)
+                continue;
+            if (!courses[i]->is_removed())
+                courses[i]->print_all();
+            cout << "______________________" << endl;
         }
-        return false;
     }
 
-    ~user () {
+    ~student() {
         pal.push_back(0-userid);
         if (removed) { // not finished
             if (created)
                 return;
 
-            if (is_doctor) {
-                fff(i, courses_size) {
-                    if (!courses[i]->is_removed())
-                        courses[i]->remove_course();
-                }
+            fff(i, courses.size()) {
+                if (courses[i] != nullptr && !courses[i]->is_removed())
+                    courses[i]->inroll_out();
             }
 
-            remove_from("./database/users.txt", userid, false);
+            remove_from("./database/users.txt", id, false);
 
             remove(path.c_str());
-            return;
-        }
 
-        if (created || edited) {
+        } else if (created || edited) {
             if (created) {
-                // appent to users;
+
                 append_to("./database/users.txt",
-                          to_string(userid) + ' ' + to_string(is_doctor) + ' ' + email + ' ' + pass + ' ' + name);
+                          to_string(id) + ' ' + to_string(is_doctor) + ' ' + email + ' ' + password + ' ' + name);
 
             }
 
             ofstream file(path);
-//            cout << boolalpha << "======>>>> " << file.is_open()  << ' ' << courses_size << ' ' << path << endl;
-            file << (to_string(userid) + ' ' + to_string(is_doctor) + ' ' + email + ' ' + pass + ' ' + name + '\n');
+            file << (to_string(userid) + ' ' + to_string(is_doctor) + ' ' + email + ' ' + password + ' ' + name + '\n');
 
-            fff(i, courses_size) {
+            fff(i, courses.size()) {
                 if (courses[i] == nullptr)
                     continue;
                 if (!courses[i]->is_removed())
@@ -854,124 +1166,120 @@ public:
 
             file.close();
 
-            return;
         }
 
-        for(auto c: courses)
+        for(student_course *c: courses)
             delete c;
     }
 };
 
 
 
-
-
-
-
-
 int main() {
-    char c = '1';
+
+    char c = '-';
     userid = -1;
     is_doctor = false;
-    user *user_on = nullptr;
+
     do {
-//        cout << "===++++++++ " << userid << endl;
-        if (userid == -1) {
-            cout << "             ********** Welcome to our EDU **********\n"
-                    "       1: log in\n"
-                    "       2: sign in\n"
-                    "       0: quit\n"
-                    " ===> ?) ";
-        } else {
-            cout << "\n\n\n\n             ********** Please select one of the following **********\n"
-                    "       3: log out\n"
-                    "       4: show my courses\n"
-                    "       5: show one of my courses\n" <<
-                    (!is_doctor ? "       6: show all courses avilable\n": "       6: create a course\n") <<
-                    (!is_doctor ? "       7: inroll in a course\n": "") <<
-                    "       0: quit //=> not safe, please safely log out then quit\n"
-                    " ===> ?) ";
-        }
-        cin >> c; cout << "\n\n\n\n" << endl;
-        switch (c) {
-            case '1': {
-                string email, pass;
-                cout
-                        << "             ********** Please inter your email and pass seperated by a space **********\n ===> ?) ";
-                cin >> email >> pass;
-                user_on = new user(email, pass);
-                if (userid == -1)
-                    delete user_on;
-                break;
+        output("Welcome, please inter 1 if your are a doctor, 0 if you are a student");
+        input();
+        cin >> c;
+
+        if (c == '1' || c == '0')
+            break;
+    } while (true);
+
+
+    if (c == '1') {
+        is_doctor = true;
+
+        doctor *doc;
+        do {
+            if (userid == -1) {
+                output("Welcome to our EDU");
+                chioce("1: log in");
+                chioce("2: sign in");
+                chioce("0: quit");
+            } else {
+                output("Please select one of the following");
+                chioce("3: log out");
+                chioce("4: show my courses");
+                chioce("5: show one of my courses");
+                chioce("6: create a course");
+                chioce("7: remove a course");
+                chioce("0: quit");
             }
-            case '2': {
-                string email, pass, name;
-                cout
-                        << "             ********** Please inter your email, pass and name"
-                           " seperated by a space, 0 for student account, 1 for doctor account **********\n ===> ?) ";
-                cin >> email >> pass >> name >> is_doctor;
-                user_on = new user(email, pass, name, is_doctor);
-                break;
-            }
-            case '3': {
-                delete user_on;
-//                if (user_on == nullptr)
-//                    cout << "==== > you are right " << endl;
-//                else
-//                    cout << "==== > you are not right " << endl;
-                userid = -1;
-                user_on = new user();
-                break;
-            }
-            case '4': {
-                if (user_on == nullptr)
+
+            input();
+            cin >> c;
+
+            switch (c) {
+                case '1': {
+                    string email, pass;
+
+                    output("Please inter your email and pass seperated by a space");
+                    input();
+
+                    cin >> email >> pass;
+                    doc = new doctor(email, pass);
+
+                    if (userid == -1)
+                        delete doc;
                     break;
-                user_on->print_courses();
-                break;
-            }
-            case '5': {
-                if (user_on == nullptr)
+                }
+                case '2': {
+                    string email, pass, name;
+                    output("Please inter your email, pass and name seperated by a space, 0 for student account, 1 for doctor account");
+                    input();
+                    cin >> email >> pass >> name;
+                    doc = new doctor(email, pass, name);
                     break;
-                course *crs;
-                int id;
-                cout
-                        << "             ********** Please inter your course id **********\n ===> ?) ";
-                cin >> id;
-                crs = user_on->get_course(id);
-                if (crs == nullptr)
-                    cout << "******* Sorry this course not found *********" << endl;
-                else {
-                    crs->print_all();
+                }
+                case '3': {
+                    delete doc;
+                    userid = -1;
+                    doc = new doctor();
+                    break;
+                }
+                case '4': {
+                    if (doc == nullptr)
+                        break;
+                    doc->print_courses();
+                    break;
+                }
+                case '5': {
+                    if (doc == nullptr)
+                        break;
+                    doctor_course *crs;
+                    int id;
+                    output("Please inter your course id");
+                    input();
 
-                    char cc{'9'};
+                    cin >> id;
+                    crs = doc->get_course(id);
+                    if (crs == nullptr)
+                        cout << "******* Sorry this course not found *********" << endl;
+                    else {
+                        crs->print_all();
 
-                    do {
-                        if (crs == nullptr)
-                            break;
+                        char cc{'9'};
 
-                        cout << "\n\n\n             ********** Please select from the following **********" << endl;
+                        do {
+                            if (crs == nullptr)
+                                break;
 
-                        if (is_doctor) {
-                            cout << "       1: show the course\n"
-                                    "       2: show assignment\n"
-                                    "       3: add assignment\n"
-                                    "       4: remove course\n"
-                                    "       0: return to the previous list" << endl;
-                        } else {
-                            cout << "       1: show the course\n"
-                                    "       2: show assignment\n"
-                                    "       3: view assignmets grades\n"
-                                    "       4: leave the course\n"
-                                    "       0: return to the previous list" << endl;
-                        }
+                            output("Please select from the following");
+                            chioce("1: show the course");
+                            chioce("2: show assignment");
+                            chioce("3: add assignment");
+                            chioce("4: remove course");
+                            chioce("0: return to the previous list");
+                            input();
+
+                            cin >> cc;
 
 
-                        cout << " ===> ?) ";
-                        cin >> cc;
-
-                        cout << "\n\n\n" << endl;
-
-                        if (is_doctor) {
                             switch (cc) {
                                 case '1': {
                                     crs->print_all();
@@ -985,7 +1293,7 @@ int main() {
 
                                     cin >> _ass_id;
 
-                                    ass * _ass = crs->get_ass(_ass_id);
+                                    doctor_ass * _ass = crs->get_ass(_ass_id);
 
                                     _ass->print_all();
 
@@ -995,11 +1303,11 @@ int main() {
                                     string _question;
 
                                     cout << "             ********** Please inter the assignment question **********" << endl;
-                                    cout << " ===> ?) ";
+                                    cout << " ===> ?) ";cin.ignore(1000, '\n');
 
                                     getline(cin, _question);
 
-                                    crs->creat_ass(_question);
+                                    crs->creat_ass(doc->get_id(), _question);
 
                                     break;
                                 }
@@ -1023,7 +1331,127 @@ int main() {
                                     break;
                                 }
                             }
-                        } else {
+
+                        } while (cc != '0');
+                    }
+                    break;
+                }
+                case '6': {
+                    if (doc == nullptr)
+                        break;
+                    int code;
+                    string name;
+                    output("Please inter your course code, name");
+                    input();
+                    cin >> code >> name;
+                    doc->create_course(code, name);
+                    break;
+                }
+                case '7': {
+                    output("feature not ready");
+                }
+                default:
+                    break;
+            }
+
+        } while (c != '0');
+
+
+        delete doc;
+    } else {
+
+        is_doctor = false;
+
+        student *stdnt;
+        do {
+            if (userid == -1) {
+
+                output("Welcome to our EDU");
+                chioce("1: log in");
+                chioce("2: sign in");
+                chioce("0: quit");
+
+
+            } else {
+
+                output("Welcome to our EDU");
+                chioce("3: log out");
+                chioce("4: show my courses");
+                chioce("5: show one of my courses");
+                chioce("6: show all courses avilable");
+                chioce("7: inroll in a course");
+                chioce("0: quit //=> not safe, please safely log out then quit");
+
+            }
+
+
+            input();
+            cin >> c;
+
+            switch (c) {
+                case '1': {
+                    string email, pass;
+                    output("Please inter your email and pass seperated by a space");
+                    input();
+                    cin >> email >> pass;
+                    stdnt = new student(email, pass);
+                    if (userid == -1)
+                        delete stdnt;
+                    break;
+                }
+                case '2': {
+                    string email, pass, name;
+                    output("Please inter your email, pass and name seperated by a space");
+                    input();
+                    cin >> email >> pass >> name >> is_doctor;
+                    stdnt = new student(email, pass, name);
+                    break;
+                }
+                case '3': {
+                    delete stdnt;
+                    userid = -1;
+                    stdnt = new student();
+                    break;
+                }
+                case '4': {
+                    if (stdnt == nullptr)
+                        break;
+                    stdnt->print_courses();
+                    break;
+                }
+                case '5': {
+                    if (stdnt == nullptr)
+                        break;
+                    student_course *crs;
+                    int id;
+                    output("Please inter your course id");
+                    input();
+                    cin >> id;
+                    crs = stdnt->get_course(id);
+                    if (crs == nullptr)
+                        output("Sorry this course not found");
+                    else {
+                        crs->print_all();
+
+                        char cc{'9'};
+
+                        do {
+                            if (crs == nullptr)
+                                break;
+
+                            cout << "\n\n\n             ********** Please select from the following **********" << endl;
+                            output("Please select from the following");
+
+                            chioce("1: show the course");
+                            chioce("2: show assignment");
+                            chioce("3: view assignmets grades");
+                            chioce("4: leave the course");
+                            chioce("0: return to the previous list");
+
+                            input();
+                            cin >> cc;
+
+
                             switch (cc) {
                                 case '1': {
                                     crs->print_all();
@@ -1032,14 +1460,14 @@ int main() {
                                 case '2': {
                                     int _ass_id;
 
-                                    cout << "             ********** Please inter the assignment id **********" << endl;
-                                    cout << " ===> ?) ";
+                                    output("Please inter the assignment id");
+                                    input();
 
                                     cin >> _ass_id;
 
-                                    ass * _ass = crs->get_ass(_ass_id);
+                                    student_ass * _ass = crs->get_ass(_ass_id);
 
-                                    _ass->print_all();
+                                    _ass->print_con();
 
                                     break;
                                 }
@@ -1051,13 +1479,13 @@ int main() {
                                 case '4': {
                                     char yes;
 
-                                    cout << "             ********** Are you sure? Y/N **********" << endl;
-                                    cout << " ===> ?) ";
+                                    output("Are you sure? Y/N ");
+                                    input();
 
                                     cin >> yes;
 
                                     if (yes == 'Y') {
-                                        user_on->inroll_out(crs);
+                                        stdnt->inroll_out(crs);
 
                                         crs = nullptr;
 
@@ -1069,66 +1497,32 @@ int main() {
                                     break;
                                 }
                             }
-                        }
-
-                    } while (cc != '0');
-                }
-                break;
-            }
-            case '6': {
-                if (user_on == nullptr)
+                        } while (cc != '0');
+                    }
                     break;
-                if (is_doctor) {
-                    int code;
-                    string name;
-                    cout
-                            << "             ********** Please inter your course code, name **********\n ===> ?) ";
-                    cin >> code >> name;
-                    user_on->create_course(code, name);
-                } else
-                    user_on->show_avilable_courses();
-                break;
-            }
-            case '7': {
-                if (!is_doctor) {
+                }
+                case '6': {
+                    if (stdnt == nullptr)
+                        break;
+                    stdnt->show_avilable_courses();
+                    break;
+                }
+                case '7': {
                     int _course_id;
-                    cout
-                            << "             ********** Please inter the course id **********\n ===> ?) ";
+                    output("Please inter the course id");
+                    input();
                     cin >> _course_id;
-
-                    user_on->inroll_in(_course_id);
+                    stdnt->inroll_in(_course_id);
                     break;
                 }
-
-                cout << "******** Sorry You are not allowed ********" << endl;
+                default:
+                    break;
             }
-            default:
-                break;
-        }
-    } while (c != '0');
+        } while (c != '0');
 
-    delete user_on;
 
-    fff(i, pal.size()) {
-        if (pal[i] == 0)
-            continue;
-        for (int j = i+1; j < pal.size(); ++j) {
-            if (abs(pal[i]) == abs(pal[j]) && pal[j] != 0) {
-                pal[i] = pal[j] = 0;
-                break;
-            }
-        }
+        delete stdnt;
     }
-
-    for (auto i : pal) {
-        if (i != 0)
-            cout << "=> look at at " << i << endl;
-    }
-
-//    if (pal == 0)
-//        cout << "<<<<****** NO MEMORY LEAK *********>>>>" << endl;
-//    else
-//        cout << "<<<<****** THERE IS MEMORY LEAK OF (" << pal << ") *********>>>>" << endl;
 
     return 0;
 }
@@ -1137,3 +1531,6 @@ int main() {
 
 
 // add_executable(edumenagementsys main.cpp)
+
+
+

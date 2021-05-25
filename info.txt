@@ -4,18 +4,543 @@ technique to load the database, save it after logout
 users >>> id is_doc email pass name {}
         ///> id is_doc email pass name
             id //=> course_id
-courses >>> id doc_id code name []
+
+
+courses >>> id doc_id
         ///> id doc_id code name
             user_id u
             ass_id a
-ass >>> id doc_id course_id \n question ()
+
+
+
+
+ass >>> id doc_id course_id
         ///> id doc_id course_id \n question
             user_id grade \n ans
 
     A <= b      means A has B;
 
     doctors <= courses <= ass
-    users <=> courses <= ass
+    users <= courses <= ass
 
 
     implement show grades & inroll out
+
+
+
+
+
+
+
+
+
+
+//
+//class user{
+//    string path, email, pass, name;
+//    bool created, removed, edited;
+//    vector <course*> courses;
+//    int courses_size;
+//
+//    void init_user () {
+//        ifstream file(path);
+//        string line; getline(file, line);
+//        int _id;
+//        course *cours;
+//
+//        while (getline(file, line)) {
+//            istringstream s(line);
+//            s >> _id;
+//            cout << "look course id ==+++ " << _id << endl;
+//            cours = new course(_id);
+//            courses[courses_size] = cours;
+//            courses_size ++;
+//        }
+//
+//        file.close();
+//    }
+//
+//    bool validate_email(string _email) {
+//        regex rx("[a-zA-Z]+[0-1]*@[a-zA-Z]+.com");
+//
+//        return regex_match(_email, rx);
+//    }
+//
+//public:
+//    user () :path(string()), created(false), removed(false), edited(false), courses_size(0) {
+//        userid = -1;
+//        pal.push_back(userid);
+//    }
+//
+//    user(string _email, string _pass) : path(string()) , created(false), removed(false), edited(false), courses_size(0) { // log in
+//
+//        int id, _is_doctor; userid = -1;
+//        ifstream file("./database/users.txt");
+//        string line;
+//
+//        while (getline(file, line)) {
+//            istringstream s(line);
+//            s >> id >> _is_doctor >> email >> pass;
+//
+//            if (email == _email && pass == _pass) {
+//                s >> name;
+//                userid = id;
+//                is_doctor = (bool)_is_doctor;
+//                path = "./database/users/" + to_string(userid) + ".txt";
+//                courses.resize(10);
+//
+//                init_user();
+//                break;
+//            }
+//        }
+//
+//        file.close();
+//
+//        if (userid == -1)
+//            cout << "********* Sorry try again *********" << endl;
+//        else
+//            cout << "******* wellcom " << name  << " your id is: " << userid << " **********" << endl;
+//
+//        pal.push_back(userid);
+//    }
+//
+//    user(string _email, string _pass, string _name, bool _is_doc) : path(string()) , created(true), removed(false), edited(false) , courses_size(0){ // sign in
+//        if (validate_email(_email)) {
+//            userid = getid();
+//            is_doctor = _is_doc;
+//            email = _email;
+//            pass = _pass;
+//            name = _name;
+////            courses.resize(10);
+//            path = "./database/users/" + to_string(userid) + ".txt";
+//
+//            cout << "****** You successfully created an " << (is_doctor? "doctor" : "student") << " account with the data: id("
+//            << userid << "), name(" << name << "), email(" << email << ") *****" << endl;
+//            return;
+//        }
+//
+//        userid = -1;
+//        is_doctor = false;
+//
+//        cout << "******* Sorrey your email is not valid please try again *******" << endl;
+//
+//        pal.push_back(userid);
+//    }
+//
+//    bool logout() {
+//        if (userid == -1) {
+//            cout << "******** Sorry an error happened please try again ********" << endl;
+//
+//            return false;
+//        }
+//
+//        userid = -1;
+//        is_doctor = false;
+//
+//        cout << "******** You loged out ********" << endl;
+//        return true;
+//    }
+//
+//    void print_courses() {
+//        cout << "********* You have " << courses.size() << " courses *********" << endl;
+//        fff(i, courses.size()) {
+//            if (courses[i] == nullptr)
+//                continue;
+//            if (!courses[i]->is_removed())
+//                courses[i]->print_all();
+//            cout << "______________________" << endl;
+//        }
+//    }
+//
+//    course *get_course(int _id) {
+//        int big {}, nd = courses_size-1, piv;
+//
+//        while (big <= nd) {
+//            piv = (big+nd)/2;
+//            if (courses[piv]->get_id() == _id)
+//                return courses[piv];
+//            else if (courses[piv]->get_id() > _id)
+//                nd = piv-1;
+//            else if (courses[piv]->get_id() < _id)
+//                big = piv+1;
+//        }
+//
+//        return nullptr;
+//    }
+//
+//    void show_avilable_courses() {
+//        if (is_doctor) {
+//            cout << "******** Sorry , for students accounts only ********" << endl;
+//            return;
+//        }
+//        ifstream file("./database/courses.txt");
+//        string line;
+//
+//        cout << "********** This is the avalable courses in the format: id doctor_id code name ***********" << endl;
+//
+//        while (getline(file, line))
+//            cout << "=> " << line << endl;
+//    }
+//
+//    bool inroll_in(int _id) {
+//        course *c = get_course(_id);
+//
+//        if (c == nullptr && !is_doctor) {
+//            c = new course(_id);
+//
+//            if (c->inroll()) {
+//                courses[courses_size] = c;
+//                courses_size++;
+//                //sort
+//                edited = true;
+//
+//                cout << "******** You successfully inrolled in course : id(" << c->get_id() << ")" << ", name("
+//                     << c->get_name() << ") *********" << endl;
+//
+//                return edited;
+//            }
+//        }
+//
+//        cout << "********* Sorry you are not allowed to inroll in this course **********" << endl;
+//
+//        return false;
+//
+//    }
+//
+//    bool inroll_out(course *_course) {
+//        cout << "******** You enrolling out of course : " << _course->get_name() << " *********" << endl;
+//
+//        _course->inroll_out();
+//        delete _course;
+//        edited = true;
+//
+//        return true;
+//    }
+//
+//    bool create_course(int _code, string _name) {
+//        if (is_doctor) {
+//            courses.push_back(new course(_code, _name));
+////            courses[courses_size] = crs;
+////            courses_size ++;
+//            edited = true;
+//
+//            return edited;
+//        }
+//        return false;
+//    }
+//
+//    ~user () {
+//        pal.push_back(0-userid);
+//        if (removed) { // not finished
+//            if (created)
+//                return;
+//
+//            if (is_doctor) {
+//                fff(i, courses_size) {
+//                    if (!courses[i]->is_removed())
+//                        courses[i]->remove_course();
+//                }
+//            }
+//
+//            remove_from("./database/users.txt", userid, false);
+//
+//            remove(path.c_str());
+//
+//        } else if (created || edited) {
+//            if (created) {
+//                // appent to users;
+//                append_to("./database/users.txt",
+//                          to_string(userid) + ' ' + to_string(is_doctor) + ' ' + email + ' ' + pass + ' ' + name);
+//
+//            }
+//
+//            ofstream file(path);
+////            cout << boolalpha << "======>>>> " << file.is_open()  << ' ' << courses_size << ' ' << path << endl;
+//            file << (to_string(userid) + ' ' + to_string(is_doctor) + ' ' + email + ' ' + pass + ' ' + name + '\n');
+//
+//            fff(i, courses.size()) {
+//                if (courses[i] == nullptr)
+//                    continue;
+//                if (!courses[i]->is_removed())
+//                    file << courses[i]->get_id() << '\n';
+//            }
+//
+//            file.close();
+//
+//        }
+//
+//        for(course *c: courses)
+//            delete c;
+//    }
+//};
+
+
+
+
+
+
+
+
+
+
+
+
+//    char c = '1';
+//    userid = -1;
+//    is_doctor = false;
+//    user *user_on = nullptr;
+//    do {
+////        cout << "===++++++++ " << userid << endl;
+//        if (userid == -1) {
+//            cout << "             ********** Welcome to our EDU **********\n"
+//                    "       1: log in\n"
+//                    "       2: sign in\n"
+//                    "       0: quit\n"
+//                    " ===> ?) ";
+//        } else {
+//            cout << "\n\n\n\n             ********** Please select one of the following **********\n"
+//                    "       3: log out\n"
+//                    "       4: show my courses\n"
+//                    "       5: show one of my courses\n" <<
+//                    (!is_doctor ? "       6: show all courses avilable\n": "       6: create a course\n") <<
+//                    (!is_doctor ? "       7: inroll in a course\n": "") <<
+//                    "       0: quit //=> not safe, please safely log out then quit\n"
+//                    " ===> ?) ";
+//        }
+//        cin >> c; cout << "\n\n\n\n" << endl;
+//        switch (c) {
+//            case '1': {
+//                string email, pass;
+//                cout
+//                        << "             ********** Please inter your email and pass seperated by a space **********\n ===> ?) ";
+//                cin >> email >> pass;
+//                user_on = new user(email, pass);
+//                if (userid == -1)
+//                    delete user_on;
+//                break;
+//            }
+//            case '2': {
+//                string email, pass, name;
+//                cout
+//                        << "             ********** Please inter your email, pass and name"
+//                           " seperated by a space, 0 for student account, 1 for doctor account **********\n ===> ?) ";
+//                cin >> email >> pass >> name >> is_doctor;
+//                user_on = new user(email, pass, name, is_doctor);
+//                break;
+//            }
+//            case '3': {
+//                delete user_on;
+////                if (user_on == nullptr)
+////                    cout << "==== > you are right " << endl;
+////                else
+////                    cout << "==== > you are not right " << endl;
+//                userid = -1;
+//                user_on = new user();
+//                break;
+//            }
+//            case '4': {
+//                if (user_on == nullptr)
+//                    break;
+//                user_on->print_courses();
+//                break;
+//            }
+//            case '5': {
+//                if (user_on == nullptr)
+//                    break;
+//                course *crs;
+//                int id;
+//                cout
+//                        << "             ********** Please inter your course id **********\n ===> ?) ";
+//                cin >> id;
+//                crs = user_on->get_course(id);
+//                if (crs == nullptr)
+//                    cout << "******* Sorry this course not found *********" << endl;
+//                else {
+//                    crs->print_all();
+//
+//                    char cc{'9'};
+//
+//                    do {
+//                        if (crs == nullptr)
+//                            break;
+//
+//                        cout << "\n\n\n             ********** Please select from the following **********" << endl;
+//
+//                        if (is_doctor) {
+//                            cout << "       1: show the course\n"
+//                                    "       2: show assignment\n"
+//                                    "       3: add assignment\n"
+//                                    "       4: remove course\n"
+//                                    "       0: return to the previous list" << endl;
+//                        } else {
+//                            cout << "       1: show the course\n"
+//                                    "       2: show assignment\n"
+//                                    "       3: view assignmets grades\n"
+//                                    "       4: leave the course\n"
+//                                    "       0: return to the previous list" << endl;
+//                        }
+//
+//
+//                        cout << " ===> ?) ";
+//                        cin >> cc;
+//
+//                        cout << "\n\n\n" << endl;
+//
+//                        if (is_doctor) {
+//                            switch (cc) {
+//                                case '1': {
+//                                    crs->print_all();
+//                                    break;
+//                                }
+//                                case '2': {
+//                                    int _ass_id;
+//
+//                                    cout << "             ********** Please inter the assignment id **********" << endl;
+//                                    cout << " ===> ?) ";
+//
+//                                    cin >> _ass_id;
+//
+//                                    ass * _ass = crs->get_ass(_ass_id);
+//
+//                                    _ass->print_all();
+//
+//                                    break;
+//                                }
+//                                case '3': {
+//                                    string _question;
+//
+//                                    cout << "             ********** Please inter the assignment question **********" << endl;
+//                                    cout << " ===> ?) ";
+//
+//                                    getline(cin, _question);
+//
+//                                    crs->creat_ass(_question);
+//
+//                                    break;
+//                                }
+//                                case '4': {
+//                                    char yes;
+//
+//                                    cout << "             ********** Are you sure? Y/N **********" << endl;
+//                                    cout << " ===> ?) ";
+//
+//                                    cin >> yes;
+//
+//                                    if (yes == 'Y') {
+//                                        crs->remove_course();
+//
+//                                        crs = nullptr;
+//
+//                                        break;
+//                                    }
+//                                }
+//                                default: {
+//                                    break;
+//                                }
+//                            }
+//                        } else {
+//                            switch (cc) {
+//                                case '1': {
+//                                    crs->print_all();
+//                                    break;
+//                                }
+//                                case '2': {
+//                                    int _ass_id;
+//
+//                                    cout << "             ********** Please inter the assignment id **********" << endl;
+//                                    cout << " ===> ?) ";
+//
+//                                    cin >> _ass_id;
+//
+//                                    ass * _ass = crs->get_ass(_ass_id);
+//
+//                                    _ass->print_all();
+//
+//                                    break;
+//                                }
+//                                case '3': {
+//                                    crs->show_grades();
+//
+//                                    break;
+//                                }
+//                                case '4': {
+//                                    char yes;
+//
+//                                    cout << "             ********** Are you sure? Y/N **********" << endl;
+//                                    cout << " ===> ?) ";
+//
+//                                    cin >> yes;
+//
+//                                    if (yes == 'Y') {
+//                                        user_on->inroll_out(crs);
+//
+//                                        crs = nullptr;
+//
+//                                    }
+//
+//                                    break;
+//                                }
+//                                default: {
+//                                    break;
+//                                }
+//                            }
+//                        }
+//
+//                    } while (cc != '0');
+//                }
+//                break;
+//            }
+//            case '6': {
+//                if (user_on == nullptr)
+//                    break;
+//                if (is_doctor) {
+//                    int code;
+//                    string name;
+//                    cout
+//                            << "             ********** Please inter your course code, name **********\n ===> ?) ";
+//                    cin >> code >> name;
+//                    user_on->create_course(code, name);
+//                } else
+//                    user_on->show_avilable_courses();
+//                break;
+//            }
+//            case '7': {
+//                if (!is_doctor) {
+//                    int _course_id;
+//                    cout
+//                            << "             ********** Please inter the course id **********\n ===> ?) ";
+//                    cin >> _course_id;
+//
+//                    user_on->inroll_in(_course_id);
+//                    break;
+//                }
+//
+//                cout << "******** Sorry You are not allowed ********" << endl;
+//            }
+//            default:
+//                break;
+//        }
+//    } while (c != '0');
+//
+//    delete user_on;
+//
+//    fff(i, pal.size()) {
+//        if (pal[i] == 0)
+//            continue;
+//        for (int j = i+1; j < pal.size(); ++j) {
+//            if (abs(pal[i]) == abs(pal[j]) && pal[j] != 0) {
+//                pal[i] = pal[j] = 0;
+//                break;
+//            }
+//        }
+//    }
+//
+//    for (auto i : pal) {
+//        if (i != 0)
+//            cout << "=> look at at " << i << endl;
+//    }
+
+//    if (pal == 0)
+//        cout << "<<<<****** NO MEMORY LEAK *********>>>>" << endl;
+//    else
+//        cout << "<<<<****** THERE IS MEMORY LEAK OF (" << pal << ") *********>>>>" << endl;
