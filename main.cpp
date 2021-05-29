@@ -186,8 +186,9 @@ public:
          * this create a new assignment using the course id and a question if the user is a doctor
          */
         path = "./database/ass/" + to_string(id) + ".txt";
-        cout << "******* You successfully added an assignment with the data: id(" <<
-             id << "), course(" << course_id << "), question(" << question << ") *********" << endl;
+
+        output("You successfully added an assignment with the data: id(" + to_string(id) + "), course("
+        + to_string(course_id) + "), question(" + question + ")");
 
         pal.push_back(id);
     }
@@ -200,8 +201,8 @@ public:
         if (removed || id == -1)
             return;
 
-        cout << "******* You are at assignment with the data: id(" <<
-             id << "), course(" << course_id << "), doctor id(" << doctor_id << "), question(" << question << ") *********" << endl;
+        output("******* You are at assignment with the data: id(" +
+        to_string(id) + "), course(" + to_string(course_id) + "), doctor id(" + to_string(doctor_id) + "), question(" + question + ")");
     }
 
     bool is_removed() {
@@ -254,8 +255,6 @@ public:
         }
 
         file.close();
-
-        print_con();
     }
 
     bool answer_question(string _answer) {
@@ -264,12 +263,12 @@ public:
             edited = true;
             grade = 0;
 
-            cout << "******** You finished this assignment with the anwser: " << answer << " ********" << endl;
+            output("You finished this assignment with the anwser: " + answer);
 
             return edited;
         }
 
-        cout << "******** Sorry You already have one submit chance, please call the instructor ********" << endl;
+        output("Sorry You already have one submit chance, please call the instructor");
 
         return false;
     }
@@ -299,7 +298,7 @@ private:
     vector <pair<pii, string>> answers;
     bool created, edited;
 
-    int get_user_index(int _id) { // binary search for user index given user id in log(n) time
+    int get_user_index(int _id) {
         /*
          * this function takes the id of an user and return it's index in the useres vector
          * if the user is not found it return -1
@@ -337,15 +336,13 @@ public:
         }
 
         file.close();
-
-        print_all();
     }
 
     doctor_ass(int _doctor_id, int _course_id, string _question) : ass(_doctor_id, _course_id, _question), created(true), edited(false){
         /*
          * this create a new assignment using the course id and a question if the user is a doctor
          */
-//        print_all();
+        output("You created assignment with id(" + to_string(id) + "), question(" + question +")");
     }
 
     void print_all() {
@@ -358,17 +355,15 @@ public:
 
         print_con();
 
-        if (is_doctor) {
-            fff(i, answers.size()) {
-                bool g = (answers[i].first.second == -1);
+        fff(i, answers.size()) {
+            bool g = (answers[i].first.second == -1);
 
-                cout << "user id(" << answers[i].first.first << "), grade :";
+            cout << "user id(" << answers[i].first.first << "), grade :";
 
-                if (g) cout << " notgraded ";
-                else cout << answers[i].first.second;
+            if (g) cout << " notgraded ";
+            else cout << answers[i].first.second;
 
-                cout << ", answer: " << answers[i].second << endl;
-            }
+            cout << ", answer: " << answers[i].second << endl;
         }
     }
 
@@ -379,12 +374,15 @@ public:
          */
         int index = get_user_index(_user_id);
 
-        if (index == -1)
+        if (index == -1) {
+            output("Sorry you are not allowed");
             return false;
+        }
 
         answers[index].first.second = _grade;
         edited = true;
 
+        output("You graded user with id(" + to_string(id) + ") and grade(" + to_string(_grade));
         return true;
     }
 
@@ -393,9 +391,12 @@ public:
          * it deletes the assignment
          * doctors only can dalete assignment
          */
-        if (removed || !is_doctor || userid != doctor_id)
+        if (removed || !is_doctor || userid != doctor_id) {
+            output("You are not allowed");
             return false;
+        }
 
+        output("You deleted assignment with id(" + to_string(id) + ")");
         removed = true;
         return true;
     }
@@ -436,8 +437,8 @@ public:
                 append_to("./database/assignments.txt",
                           to_string(id) + ' ' + to_string(doctor_id) + ' ' + to_string(course_id));
 
-                append_to("./database/courses/" + to_string(course_id) + ".txt",
-                          to_string(id) + " a");
+//                append_to("./database/courses/" + to_string(course_id) + ".txt",
+//                          to_string(id) + " a");
             }
 
             fstream file(path, (ios::out | ios::trunc));
@@ -497,8 +498,8 @@ public:
         path = "./database/courses/" + to_string(id) + ".txt";
         created = true;
 
-        cout << "******* You successfully added a course with the data: id(" <<
-             id << "), code(" << code << "), name(" << name << ") *********" << endl;
+        output("You successfully added a course with the data: id(" +
+            to_string(id) + "), code(" + to_string(code) + "), name(" + name + ")");
 
         pal.push_back(id);
     }
@@ -506,11 +507,12 @@ public:
 
     void print_conc() {
         if (removed) {
-            cout << "******* Sorry this course is removed *******" << endl;
+            output("Sorry this course is removed");
             return;
         }
 
-        cout << "=> this is course: " << name << ", id(" << id << "), code(" << code << "), doctor id(" << doctor_id << ")" << endl;
+        output("=> this is course: id(" +
+               to_string(id) + "), code(" + to_string(code) + "), name(" + name + ")");
     }
 
 
@@ -587,16 +589,16 @@ public:
     bool inroll_in() {
         if (!inrollin) {
             inrollin = true;
-            cout << "******** You successfully inrolled in course " << id << ": " << name << " ********" << endl;
+            output("You successfully inrolled in course " + to_string(id) + ": " + name);
         }
 
-        cout << "******** You already in course " << id << ": " << name << " ********" << endl;
+        output("You already in course " + to_string(id) + ": " + name);
 
         return inrollin;
     }
 
     void show_grades() {
-        cout << "******* Your grades in course : " << name << " ********" << endl;
+        output("Your grades in course : "+ name);
 
         fff(i, asses.size()) {
             if (asses[i] == nullptr)
@@ -621,10 +623,10 @@ public:
 
         if (!inrollin) {
             inrollin = true;
-            cout << "******** You successfully inrolled in course " << id << ": " << name << " ********" << endl;
+            output("You successfully inrolled in course " + to_string(id) + ": " + name);
         }
 
-        cout << "******** You already out of course " << id << ": " << name << " ********" << endl;
+        output("You already out of course " + to_string(id) + ": " + name);
     }
 
     void print_all() {
@@ -634,7 +636,7 @@ public:
         print_conc();
 
         if (!asses.empty()) {
-            cout << "           *** assignments ***" << endl;
+            cout << "           *** assignments (" << asses.size() << ")***" << endl;
             fff(i, asses.size()) {
                 if (!asses[i]->is_removed())
                     asses[i]->print_con();
@@ -699,12 +701,12 @@ public:
         doctor_ass *_ass = get_ass(_id);
 
         if (!is_doctor || _ass == nullptr || _ass->is_removed() || _ass->get_id() == -1) {
-            cout << "******* Sorry you can not remove this assignment ********" << endl;
+            output("Sorry you can not remove this assignment");
             return false;
         }
 
         _ass->delete_ass();
-        cout << "****** You successfuly removed assigment with id(" << _ass->get_id() << ") *********" << endl;
+        output("You successfuly removed assigment with id(" + to_string(_ass->get_id()) + ")");
 
         edited = true;
         return edited;
@@ -729,12 +731,12 @@ public:
 
     bool remove_course() {
         if (removed || !is_doctor || userid != doctor_id) {
-            cout << "******* Sorry you can not remove this course ********" << endl;
+            output("Sorry you can not remove this course");
             return false;
         }
 
         removed = true;
-        cout << "****** You successfuly removed a course with id(" << id << ") *********" << endl;
+        output("You successfuly removed a course with id(" +to_string(id) + ")");
         return removed;
     }
 
@@ -744,7 +746,7 @@ public:
         print_conc();
 
         if (!asses.empty()) {
-            cout << "           *** assignments ***" << endl;
+            cout << "           *** assignments (" << asses.size() << ")***" << endl;
             for(auto a: asses) {
                 if (a != nullptr && !a->is_removed())
                     a->print_con();
@@ -785,7 +787,7 @@ public:
                           to_string(id) + ' ' + to_string(doctor_id) + ' ' + to_string(code) + ' ' + name);
             }
             ofstream file(path, ios::app);
-            file << id << ' ' << doctor_id << ' ' << code << ' ' << name << '\n';
+//            file << id << ' ' << doctor_id << ' ' << code << ' ' << name << '\n';
 
             fff(i, asses.size()) {
                 if (asses[i] == nullptr)
@@ -826,10 +828,7 @@ protected:
         while (getline(file, line)) {
             istringstream s(line);
             s >> _id;
-            cout << "look course id ==+++ " << _id << endl;
             cours = new course(_id);
-//            courses[courses_size] = cours;
-//            courses_size ++;
         }
 
         file.close();
@@ -871,9 +870,9 @@ public:
         file.close();
 
         if (userid == -1)
-            cout << "********* Sorry try again *********" << endl;
+            output("Sorry try again");
         else
-            cout << "******* wellcom " << name  << " your id is: " << userid << " **********" << endl;
+            output("wellcom " + name  + " your id is: " + to_string(userid));
 
         pal.push_back(userid);
     }
@@ -889,6 +888,7 @@ public:
 
             cout << "****** You successfully created an " << (is_doctor? "doctor" : "student") << " account with the data: id("
             << userid << "), name(" << name << "), email(" << email << ") *****" << endl;
+
             return;
         }
 
@@ -902,15 +902,14 @@ public:
 
     bool logout() {
         if (userid == -1 || id == -1) {
-            cout << "******** Sorry an error happened please try again ********" << endl;
-
+            output("Sorry an error happened please try again");
             return false;
         }
 
         userid = id = -1;
         is_doctor = false;
 
-        cout << "******** You loged out ********" << endl;
+        output("You loged out");
         return true;
     }
 
@@ -961,12 +960,15 @@ public:
     }
 
     void print_courses() {
-        cout << "********* You have " << courses.size() << " courses *********" << endl;
+        output("You have " + to_string(courses.size()) + " courses");
+
         fff(i, courses.size()) {
             if (courses[i] == nullptr)
                 continue;
+
             if (!courses[i]->is_removed())
                 courses[i]->print_all();
+
             cout << "______________________" << endl;
         }
     }
@@ -976,6 +978,7 @@ public:
 
         while (big <= nd) {
             piv = (big+nd)/2;
+
             if (courses[piv]->get_id() == _id)
                 return courses[piv];
             else if (courses[piv]->get_id() > _id)
@@ -1061,7 +1064,7 @@ public:
         ifstream file("./database/courses.txt");
         string line;
 
-        cout << "********** This is the avalable courses in the format: id doctor_id code name ***********" << endl;
+        output("This is the avalable courses in the format: id doctor_id code name");
 
         while (getline(file, line))
             cout << "=> " << line << endl;
@@ -1097,9 +1100,8 @@ public:
                 //sort
                 edited = true;
 
-                cout << "******** You successfully inrolled in course : id(" << c->get_id() << ")" << ", name("
-                     << c->get_name() << ") *********" << endl;
-
+                output("You successfully inrolled in course : id(" + to_string(c->get_id()) + ")" + ", name("
+                       + c->get_name() + ") ");
                 return edited;
             }
         }
@@ -1111,7 +1113,7 @@ public:
     }
 
     bool inroll_out(student_course *_course) {
-        cout << "******** You enrolling out of course : " << _course->get_name() << " *********" << endl;
+        output("You enrolling out of course : " + _course->get_name());
 
         _course->inroll_out();
         delete _course;
@@ -1121,7 +1123,8 @@ public:
     }
 
     void print_courses() {
-        cout << "********* You have " << courses.size() << " courses *********" << endl;
+        output("You have " + to_string(courses.size()) + " courses");
+
         fff(i, courses.size()) {
             if (courses[i] == nullptr)
                 continue;
@@ -1259,7 +1262,7 @@ int main() {
                     cin >> id;
                     crs = doc->get_course(id);
                     if (crs == nullptr)
-                        cout << "******* Sorry this course not found *********" << endl;
+                        output("Sorry this course not found");
                     else {
                         crs->print_all();
 
@@ -1296,6 +1299,68 @@ int main() {
                                     doctor_ass * _ass = crs->get_ass(_ass_id);
 
                                     _ass->print_all();
+
+                                    char cs{'-'};
+
+                                    do{
+                                        if (_ass == nullptr)
+                                            break;
+                                        output("Please select from the following");
+                                        chioce("1: show the assignment");
+                                        chioce("2: show student's answer");
+                                        chioce("3: grade a student");
+                                        chioce("4: remove assignment");
+                                        chioce("0: return to the previous list");
+                                        input();
+
+                                        cin >> cs;
+
+                                        switch (cs) {
+
+                                            case '1': {
+                                                _ass->print_all();
+
+                                                break;
+                                            }
+                                            case '2': {
+                                                int student_id;
+                                                output("inter the student id");
+                                                input();
+                                                cin >> student_id;
+
+                                                pair <pii, string> sa = _ass->get_ans(student_id);
+
+                                                if (sa.first.first == -1)
+                                                    output("This user has not answer the assignment yet");
+                                                else
+                                                    output("student id(" + to_string(sa.first.first) + "), grade(" + to_string(sa.first.second)
+                                                    + sa.second);
+
+                                                break;
+                                            }
+                                            case '3': {
+                                                int student_id, grade;
+                                                output("inter the student id & grade");
+                                                input();
+                                                cin >> student_id >> grade;
+
+                                                _ass->put_grade(student_id, grade);
+                                                break;
+                                            }
+                                            case '4': {
+                                                _ass->delete_ass();
+                                                break;
+                                            }
+                                            default: {
+                                                _ass = nullptr;
+                                                break;
+                                            }
+                                        }
+
+
+                                    } while (cs != '0');
+
+
 
                                     break;
                                 }
@@ -1422,12 +1487,16 @@ int main() {
                 case '5': {
                     if (stdnt == nullptr)
                         break;
+
                     student_course *crs;
                     int id;
+
                     output("Please inter your course id");
                     input();
                     cin >> id;
+
                     crs = stdnt->get_course(id);
+
                     if (crs == nullptr)
                         output("Sorry this course not found");
                     else {
@@ -1439,7 +1508,6 @@ int main() {
                             if (crs == nullptr)
                                 break;
 
-                            cout << "\n\n\n             ********** Please select from the following **********" << endl;
                             output("Please select from the following");
 
                             chioce("1: show the course");
@@ -1468,6 +1536,59 @@ int main() {
                                     student_ass * _ass = crs->get_ass(_ass_id);
 
                                     _ass->print_con();
+
+                                    char sa{'-'};
+
+                                    do {
+
+                                        if (_ass == nullptr)
+                                            break;
+
+                                        output("Please select from the following");
+
+                                        chioce("1: show the assignment");
+                                        chioce("2: show my grade");
+                                        chioce("3: answer this assignment");
+                                        chioce("4: show my answer");
+                                        chioce("0: return to the previous list");
+
+                                        input();
+                                        cin >> sa;
+
+
+                                        switch (sa) {
+
+                                            case '1': {
+                                                _ass->print_con();
+                                                break;
+                                            }
+                                            case '2': {
+                                                output("Your grade : " + to_string(_ass->get_my_grade()));
+                                                break;
+                                            }
+                                            case '3': {
+
+                                                string ans;
+                                                output("input your answer");
+                                                input();
+                                                cin.ignore(1000, '\n');
+                                                getline(cin, ans);
+
+                                                _ass->answer_question(ans);
+                                                break;
+                                            }
+                                            case '4': {
+                                                output("Your answer is: " + _ass->get_my_answer());
+                                                break;
+                                            }
+                                            case '0': {
+                                                _ass = nullptr;
+                                            }
+                                            default:
+                                                break;
+                                        }
+
+                                    } while (sa != '0');
 
                                     break;
                                 }
