@@ -283,7 +283,7 @@ public:
 
     ~student_ass() {
         if (edited) {
-            append_to(path, to_string(id) + ' ' + to_string(grade));
+            append_to(path, to_string(userid) + ' ' + to_string(grade));
             append_to(path, answer);
         }
     }
@@ -590,6 +590,7 @@ public:
         if (!inrollin) {
             inrollin = true;
             output("You successfully inrolled in course " + to_string(id) + ": " + name);
+            return true;
         }
 
         output("You already in course " + to_string(id) + ": " + name);
@@ -621,9 +622,12 @@ public:
 //        fff(i, asses.size())
 //            asses[i]->remove_my_answers();
 
-        if (!inrollin) {
-            inrollin = true;
-            output("You successfully inrolled in course " + to_string(id) + ": " + name);
+        if (!inrollout) {
+            inrollout = true;
+            inrollin = false;
+//            removed = true;
+            output("You successfully inrolled out course " + to_string(id) + ": " + name);
+            return;
         }
 
         output("You already out of course " + to_string(id) + ": " + name);
@@ -643,6 +647,12 @@ public:
             }
         }
     }
+
+
+    bool is_out() {
+        return inrollout;
+    }
+
 
     ~student_course() {
         if (inrollin)
@@ -1116,7 +1126,7 @@ public:
         output("You enrolling out of course : " + _course->get_name());
 
         _course->inroll_out();
-        delete _course;
+//        delete _course;
         edited = true;
 
         return true;
@@ -1163,7 +1173,7 @@ public:
             fff(i, courses.size()) {
                 if (courses[i] == nullptr)
                     continue;
-                if (!courses[i]->is_removed())
+                if (!courses[i]->is_removed() && !courses[i]->is_out())
                     file << courses[i]->get_id() << '\n';
             }
 

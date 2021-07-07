@@ -24,7 +24,6 @@ ass >>> id doc_id course_id
     users <= courses <= ass
 
 
-    implement show grades & inroll out
 
 
 
@@ -33,7 +32,7 @@ ass >>> id doc_id course_id
 
 
 
-
+// student ass
 
 //
 //class user{

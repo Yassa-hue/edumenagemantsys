@@ -1,4 +1,4 @@
 8 2 7
 what is a compiler
-10 10
+8 10
 a compiler is a software convert code into 0s & 1s
