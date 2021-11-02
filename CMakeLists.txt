@@ -3,4 +3,4 @@ project(edumenagementsys)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(edumenagementsys main.cpp header_files/helper_functions.h source_files/helper_functions.cpp source_files/ass.cpp header_files/ass.h source_files/student_ass.cpp header_files/student_ass.h source_files/doctor_ass.cpp header_files/doctor_ass.h source_files/course.cpp header_files/course.h source_files/student_course.cpp header_files/student_course.h source_files/doctor_course.cpp header_files/doctor_course.h source_files/user.cpp header_files/user.h source_files/student.cpp header_files/student.h source_files/doctor.cpp header_files/doctor.h)
+add_executable(edumenagementsys main.cpp header_files/helper_functions.h source_files/helper_functions.cpp Assignment/Assignment_view.h Assignment/Assignment_model.h Assignment/Assignment_controler.h Assignment/Assignment_view.cpp Assignment/Assignment_model.cpp Assignment/Assignment_controler.cpp Assignment/Assignment_MVC.cpp Assignment/Assignment_MVC.h)

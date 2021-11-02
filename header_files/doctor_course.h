@@ -8,9 +8,9 @@
 #include "course.h"
 #include "doctor_ass.h"
 
-class doctor_course: public course {
+class doctor_course: public course<doctor_ass> {
 private:
-    vector<doctor_ass*> asses;
+//    vector<doctor_ass*> asses;
     vi students;
 public:
 
@@ -24,7 +24,7 @@ public:
 
     bool remove_ass(int _id);
 
-    doctor_ass* get_ass(int _id);
+//    doctor_ass* get_ass(int _id);
 
     bool remove_course();
 

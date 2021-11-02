@@ -7,10 +7,10 @@
 
 #include "course.h"
 #include "student_ass.h"
+#include "doctor_ass.h"
 
 
-
-class student_course: public course {
+class student_course: public course<doctor_ass> {
 private:
     vector<student_ass*> asses;
     bool inrollin, inrollout;
@@ -23,7 +23,7 @@ public:
 
     student_course(int _id, int _userid);
 
-    student_ass* get_ass(int _id);
+//    student_ass* get_ass(int _id);
 
     bool inroll_in();
 

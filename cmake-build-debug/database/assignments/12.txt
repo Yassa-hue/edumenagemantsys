@@ -1,0 +1,4 @@
+12 2 7
+what is cin?
+10 0
+cin is an stream object detecated for standart input (the keyboard)

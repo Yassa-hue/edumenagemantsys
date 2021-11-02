@@ -9,7 +9,7 @@
 
 void append_to (string path, string line);
 
-int getid ();
+int get_new_id ();
 
 int get_id (string _pass, int _id, int _index);
 
@@ -20,6 +20,8 @@ void output(string s);
 void input();
 
 void chioce(string s);
+
+void write_lines_to_file(string path, vector<string> &lines);
 
 #endif //helper_functions
 

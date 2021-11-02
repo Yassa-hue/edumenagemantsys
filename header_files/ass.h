@@ -42,6 +42,8 @@ public:
 
     int get_course_id ();
 
+    bool operator==(int _id) const;
+
     ~ass();
 };
 

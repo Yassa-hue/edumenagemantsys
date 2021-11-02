@@ -123,6 +123,114 @@ edumenagementsys/fast:
 	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/build
 .PHONY : edumenagementsys/fast
 
+Assignment/Assignment_MVC.o: Assignment/Assignment_MVC.cpp.o
+
+.PHONY : Assignment/Assignment_MVC.o
+
+# target to build an object file
+Assignment/Assignment_MVC.cpp.o:
+	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_MVC.cpp.o
+.PHONY : Assignment/Assignment_MVC.cpp.o
+
+Assignment/Assignment_MVC.i: Assignment/Assignment_MVC.cpp.i
+
+.PHONY : Assignment/Assignment_MVC.i
+
+# target to preprocess a source file
+Assignment/Assignment_MVC.cpp.i:
+	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_MVC.cpp.i
+.PHONY : Assignment/Assignment_MVC.cpp.i
+
+Assignment/Assignment_MVC.s: Assignment/Assignment_MVC.cpp.s
+
+.PHONY : Assignment/Assignment_MVC.s
+
+# target to generate assembly for a file
+Assignment/Assignment_MVC.cpp.s:
+	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_MVC.cpp.s
+.PHONY : Assignment/Assignment_MVC.cpp.s
+
+Assignment/Assignment_controler.o: Assignment/Assignment_controler.cpp.o
+
+.PHONY : Assignment/Assignment_controler.o
+
+# target to build an object file
+Assignment/Assignment_controler.cpp.o:
+	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_controler.cpp.o
+.PHONY : Assignment/Assignment_controler.cpp.o
+
+Assignment/Assignment_controler.i: Assignment/Assignment_controler.cpp.i
+
+.PHONY : Assignment/Assignment_controler.i
+
+# target to preprocess a source file
+Assignment/Assignment_controler.cpp.i:
+	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_controler.cpp.i
+.PHONY : Assignment/Assignment_controler.cpp.i
+
+Assignment/Assignment_controler.s: Assignment/Assignment_controler.cpp.s
+
+.PHONY : Assignment/Assignment_controler.s
+
+# target to generate assembly for a file
+Assignment/Assignment_controler.cpp.s:
+	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_controler.cpp.s
+.PHONY : Assignment/Assignment_controler.cpp.s
+
+Assignment/Assignment_model.o: Assignment/Assignment_model.cpp.o
+
+.PHONY : Assignment/Assignment_model.o
+
+# target to build an object file
+Assignment/Assignment_model.cpp.o:
+	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_model.cpp.o
+.PHONY : Assignment/Assignment_model.cpp.o
+
+Assignment/Assignment_model.i: Assignment/Assignment_model.cpp.i
+
+.PHONY : Assignment/Assignment_model.i
+
+# target to preprocess a source file
+Assignment/Assignment_model.cpp.i:
+	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_model.cpp.i
+.PHONY : Assignment/Assignment_model.cpp.i
+
+Assignment/Assignment_model.s: Assignment/Assignment_model.cpp.s
+
+.PHONY : Assignment/Assignment_model.s
+
+# target to generate assembly for a file
+Assignment/Assignment_model.cpp.s:
+	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_model.cpp.s
+.PHONY : Assignment/Assignment_model.cpp.s
+
+Assignment/Assignment_view.o: Assignment/Assignment_view.cpp.o
+
+.PHONY : Assignment/Assignment_view.o
+
+# target to build an object file
+Assignment/Assignment_view.cpp.o:
+	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_view.cpp.o
+.PHONY : Assignment/Assignment_view.cpp.o
+
+Assignment/Assignment_view.i: Assignment/Assignment_view.cpp.i
+
+.PHONY : Assignment/Assignment_view.i
+
+# target to preprocess a source file
+Assignment/Assignment_view.cpp.i:
+	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_view.cpp.i
+.PHONY : Assignment/Assignment_view.cpp.i
+
+Assignment/Assignment_view.s: Assignment/Assignment_view.cpp.s
+
+.PHONY : Assignment/Assignment_view.s
+
+# target to generate assembly for a file
+Assignment/Assignment_view.cpp.s:
+	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_view.cpp.s
+.PHONY : Assignment/Assignment_view.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -149,141 +257,6 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/main.cpp.s
 .PHONY : main.cpp.s
-
-source_files/ass.o: source_files/ass.cpp.o
-
-.PHONY : source_files/ass.o
-
-# target to build an object file
-source_files/ass.cpp.o:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/ass.cpp.o
-.PHONY : source_files/ass.cpp.o
-
-source_files/ass.i: source_files/ass.cpp.i
-
-.PHONY : source_files/ass.i
-
-# target to preprocess a source file
-source_files/ass.cpp.i:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/ass.cpp.i
-.PHONY : source_files/ass.cpp.i
-
-source_files/ass.s: source_files/ass.cpp.s
-
-.PHONY : source_files/ass.s
-
-# target to generate assembly for a file
-source_files/ass.cpp.s:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/ass.cpp.s
-.PHONY : source_files/ass.cpp.s
-
-source_files/course.o: source_files/course.cpp.o
-
-.PHONY : source_files/course.o
-
-# target to build an object file
-source_files/course.cpp.o:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/course.cpp.o
-.PHONY : source_files/course.cpp.o
-
-source_files/course.i: source_files/course.cpp.i
-
-.PHONY : source_files/course.i
-
-# target to preprocess a source file
-source_files/course.cpp.i:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/course.cpp.i
-.PHONY : source_files/course.cpp.i
-
-source_files/course.s: source_files/course.cpp.s
-
-.PHONY : source_files/course.s
-
-# target to generate assembly for a file
-source_files/course.cpp.s:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/course.cpp.s
-.PHONY : source_files/course.cpp.s
-
-source_files/doctor.o: source_files/doctor.cpp.o
-
-.PHONY : source_files/doctor.o
-
-# target to build an object file
-source_files/doctor.cpp.o:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/doctor.cpp.o
-.PHONY : source_files/doctor.cpp.o
-
-source_files/doctor.i: source_files/doctor.cpp.i
-
-.PHONY : source_files/doctor.i
-
-# target to preprocess a source file
-source_files/doctor.cpp.i:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/doctor.cpp.i
-.PHONY : source_files/doctor.cpp.i
-
-source_files/doctor.s: source_files/doctor.cpp.s
-
-.PHONY : source_files/doctor.s
-
-# target to generate assembly for a file
-source_files/doctor.cpp.s:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/doctor.cpp.s
-.PHONY : source_files/doctor.cpp.s
-
-source_files/doctor_ass.o: source_files/doctor_ass.cpp.o
-
-.PHONY : source_files/doctor_ass.o
-
-# target to build an object file
-source_files/doctor_ass.cpp.o:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/doctor_ass.cpp.o
-.PHONY : source_files/doctor_ass.cpp.o
-
-source_files/doctor_ass.i: source_files/doctor_ass.cpp.i
-
-.PHONY : source_files/doctor_ass.i
-
-# target to preprocess a source file
-source_files/doctor_ass.cpp.i:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/doctor_ass.cpp.i
-.PHONY : source_files/doctor_ass.cpp.i
-
-source_files/doctor_ass.s: source_files/doctor_ass.cpp.s
-
-.PHONY : source_files/doctor_ass.s
-
-# target to generate assembly for a file
-source_files/doctor_ass.cpp.s:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/doctor_ass.cpp.s
-.PHONY : source_files/doctor_ass.cpp.s
-
-source_files/doctor_course.o: source_files/doctor_course.cpp.o
-
-.PHONY : source_files/doctor_course.o
-
-# target to build an object file
-source_files/doctor_course.cpp.o:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/doctor_course.cpp.o
-.PHONY : source_files/doctor_course.cpp.o
-
-source_files/doctor_course.i: source_files/doctor_course.cpp.i
-
-.PHONY : source_files/doctor_course.i
-
-# target to preprocess a source file
-source_files/doctor_course.cpp.i:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/doctor_course.cpp.i
-.PHONY : source_files/doctor_course.cpp.i
-
-source_files/doctor_course.s: source_files/doctor_course.cpp.s
-
-.PHONY : source_files/doctor_course.s
-
-# target to generate assembly for a file
-source_files/doctor_course.cpp.s:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/doctor_course.cpp.s
-.PHONY : source_files/doctor_course.cpp.s
 
 source_files/helper_functions.o: source_files/helper_functions.cpp.o
 
@@ -312,114 +285,6 @@ source_files/helper_functions.cpp.s:
 	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/helper_functions.cpp.s
 .PHONY : source_files/helper_functions.cpp.s
 
-source_files/student.o: source_files/student.cpp.o
-
-.PHONY : source_files/student.o
-
-# target to build an object file
-source_files/student.cpp.o:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/student.cpp.o
-.PHONY : source_files/student.cpp.o
-
-source_files/student.i: source_files/student.cpp.i
-
-.PHONY : source_files/student.i
-
-# target to preprocess a source file
-source_files/student.cpp.i:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/student.cpp.i
-.PHONY : source_files/student.cpp.i
-
-source_files/student.s: source_files/student.cpp.s
-
-.PHONY : source_files/student.s
-
-# target to generate assembly for a file
-source_files/student.cpp.s:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/student.cpp.s
-.PHONY : source_files/student.cpp.s
-
-source_files/student_ass.o: source_files/student_ass.cpp.o
-
-.PHONY : source_files/student_ass.o
-
-# target to build an object file
-source_files/student_ass.cpp.o:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/student_ass.cpp.o
-.PHONY : source_files/student_ass.cpp.o
-
-source_files/student_ass.i: source_files/student_ass.cpp.i
-
-.PHONY : source_files/student_ass.i
-
-# target to preprocess a source file
-source_files/student_ass.cpp.i:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/student_ass.cpp.i
-.PHONY : source_files/student_ass.cpp.i
-
-source_files/student_ass.s: source_files/student_ass.cpp.s
-
-.PHONY : source_files/student_ass.s
-
-# target to generate assembly for a file
-source_files/student_ass.cpp.s:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/student_ass.cpp.s
-.PHONY : source_files/student_ass.cpp.s
-
-source_files/student_course.o: source_files/student_course.cpp.o
-
-.PHONY : source_files/student_course.o
-
-# target to build an object file
-source_files/student_course.cpp.o:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/student_course.cpp.o
-.PHONY : source_files/student_course.cpp.o
-
-source_files/student_course.i: source_files/student_course.cpp.i
-
-.PHONY : source_files/student_course.i
-
-# target to preprocess a source file
-source_files/student_course.cpp.i:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/student_course.cpp.i
-.PHONY : source_files/student_course.cpp.i
-
-source_files/student_course.s: source_files/student_course.cpp.s
-
-.PHONY : source_files/student_course.s
-
-# target to generate assembly for a file
-source_files/student_course.cpp.s:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/student_course.cpp.s
-.PHONY : source_files/student_course.cpp.s
-
-source_files/user.o: source_files/user.cpp.o
-
-.PHONY : source_files/user.o
-
-# target to build an object file
-source_files/user.cpp.o:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/user.cpp.o
-.PHONY : source_files/user.cpp.o
-
-source_files/user.i: source_files/user.cpp.i
-
-.PHONY : source_files/user.i
-
-# target to preprocess a source file
-source_files/user.cpp.i:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/user.cpp.i
-.PHONY : source_files/user.cpp.i
-
-source_files/user.s: source_files/user.cpp.s
-
-.PHONY : source_files/user.s
-
-# target to generate assembly for a file
-source_files/user.cpp.s:
-	$(MAKE) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/source_files/user.cpp.s
-.PHONY : source_files/user.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -429,39 +294,24 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... edumenagementsys"
+	@echo "... Assignment/Assignment_MVC.o"
+	@echo "... Assignment/Assignment_MVC.i"
+	@echo "... Assignment/Assignment_MVC.s"
+	@echo "... Assignment/Assignment_controler.o"
+	@echo "... Assignment/Assignment_controler.i"
+	@echo "... Assignment/Assignment_controler.s"
+	@echo "... Assignment/Assignment_model.o"
+	@echo "... Assignment/Assignment_model.i"
+	@echo "... Assignment/Assignment_model.s"
+	@echo "... Assignment/Assignment_view.o"
+	@echo "... Assignment/Assignment_view.i"
+	@echo "... Assignment/Assignment_view.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... source_files/ass.o"
-	@echo "... source_files/ass.i"
-	@echo "... source_files/ass.s"
-	@echo "... source_files/course.o"
-	@echo "... source_files/course.i"
-	@echo "... source_files/course.s"
-	@echo "... source_files/doctor.o"
-	@echo "... source_files/doctor.i"
-	@echo "... source_files/doctor.s"
-	@echo "... source_files/doctor_ass.o"
-	@echo "... source_files/doctor_ass.i"
-	@echo "... source_files/doctor_ass.s"
-	@echo "... source_files/doctor_course.o"
-	@echo "... source_files/doctor_course.i"
-	@echo "... source_files/doctor_course.s"
 	@echo "... source_files/helper_functions.o"
 	@echo "... source_files/helper_functions.i"
 	@echo "... source_files/helper_functions.s"
-	@echo "... source_files/student.o"
-	@echo "... source_files/student.i"
-	@echo "... source_files/student.s"
-	@echo "... source_files/student_ass.o"
-	@echo "... source_files/student_ass.i"
-	@echo "... source_files/student_ass.s"
-	@echo "... source_files/student_course.o"
-	@echo "... source_files/student_course.i"
-	@echo "... source_files/student_course.s"
-	@echo "... source_files/user.o"
-	@echo "... source_files/user.i"
-	@echo "... source_files/user.s"
 .PHONY : help
 
 

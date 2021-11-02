@@ -5,12 +5,14 @@
 #include "../header_files/course.h"
 #include "../header_files/helper_functions.h"
 
-
-course::course () : id(-1), created(false), removed(false), edited(false){
+template <typename assignment_template>
+course<assignment_template>::course () : id(-1), created(false), removed(false), edited(false){
 //    pal.push_back(id);
 }
 
-course::course (int _id)
+
+template <typename assignment_template>
+course<assignment_template>::course (int _id)
         : id(_id), created(false), edited(false), removed(false){
 
     path = "./database/courses/" + to_string(id) + ".txt";
@@ -29,7 +31,9 @@ course::course (int _id)
 
 }
 
-course::course (int _doctor_id,int _code, string _name) // creating a course
+
+template <typename assignment_template>
+course<assignment_template>::course (int _doctor_id,int _code, string _name) // creating a course
         : id(getid()), doctor_id(_doctor_id), code(_code), name(std::move(_name)),  created(false), edited(false), removed(false) {
     path = "./database/courses/" + to_string(id) + ".txt";
     created = true;
@@ -40,8 +44,8 @@ course::course (int _doctor_id,int _code, string _name) // creating a course
 //    pal.push_back(id);
 }
 
-
-void course::print_conc() {
+template <typename assignment_template>
+void course<assignment_template>::print_conc() {
     if (removed) {
         output("Sorry this course is removed");
         return;
@@ -52,19 +56,42 @@ void course::print_conc() {
 }
 
 
-bool course::is_removed() {
+
+
+
+
+template <typename assignment_template>
+bool course<assignment_template>::is_removed() {
     return removed;
 }
 
-int course::get_id() {
+
+
+template <typename assignment_template>
+int course<assignment_template>::get_id() {
     return id;
 }
 
-string course::get_name() {
+
+template <typename assignment_template>
+string course<assignment_template>::get_name() {
     return name;
 }
 
-course::~course() {
+
+template <typename assignment_template>
+assignment_template *course<assignment_template>::get_ass(int _id) {
+    fff(ass_index, asses.size()) {
+        if (asses[ass_index] == _id)
+            return asses[ass_index];
+    }
+    return nullptr;
+}
+
+
+
+template <typename assignment_template>
+course<assignment_template>::~course() {
 //    pal.push_back(0-id);
 
 

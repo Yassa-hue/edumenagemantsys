@@ -71,6 +71,11 @@ int ass::get_course_id () {
     return course_id;
 }
 
+bool ass::operator==(int _id) const {
+    return (id == _id);
+}
+
+
 ass::~ass() {
     //
 }

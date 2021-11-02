@@ -82,67 +82,37 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/header_files/ass.h">
+		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_MVC.cpp">
 			<Option target="edumenagementsys"/>
 		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/header_files/course.h">
+		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_MVC.h">
 			<Option target="edumenagementsys"/>
 		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/header_files/doctor.h">
+		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_controler.cpp">
 			<Option target="edumenagementsys"/>
 		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/header_files/doctor_ass.h">
+		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_controler.h">
 			<Option target="edumenagementsys"/>
 		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/header_files/doctor_course.h">
+		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_model.cpp">
+			<Option target="edumenagementsys"/>
+		</Unit>
+		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_model.h">
+			<Option target="edumenagementsys"/>
+		</Unit>
+		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_view.cpp">
+			<Option target="edumenagementsys"/>
+		</Unit>
+		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_view.h">
 			<Option target="edumenagementsys"/>
 		</Unit>
 		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/header_files/helper_functions.h">
 			<Option target="edumenagementsys"/>
 		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/header_files/student.h">
-			<Option target="edumenagementsys"/>
-		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/header_files/student_ass.h">
-			<Option target="edumenagementsys"/>
-		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/header_files/student_course.h">
-			<Option target="edumenagementsys"/>
-		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/header_files/user.h">
-			<Option target="edumenagementsys"/>
-		</Unit>
 		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/main.cpp">
 			<Option target="edumenagementsys"/>
 		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/source_files/ass.cpp">
-			<Option target="edumenagementsys"/>
-		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/source_files/course.cpp">
-			<Option target="edumenagementsys"/>
-		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/source_files/doctor.cpp">
-			<Option target="edumenagementsys"/>
-		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/source_files/doctor_ass.cpp">
-			<Option target="edumenagementsys"/>
-		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/source_files/doctor_course.cpp">
-			<Option target="edumenagementsys"/>
-		</Unit>
 		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/source_files/helper_functions.cpp">
-			<Option target="edumenagementsys"/>
-		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/source_files/student.cpp">
-			<Option target="edumenagementsys"/>
-		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/source_files/student_ass.cpp">
-			<Option target="edumenagementsys"/>
-		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/source_files/student_course.cpp">
-			<Option target="edumenagementsys"/>
-		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/source_files/user.cpp">
 			<Option target="edumenagementsys"/>
 		</Unit>
 		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/CMakeLists.txt">

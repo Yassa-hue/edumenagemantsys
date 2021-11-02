@@ -16,7 +16,7 @@ void append_to (string path, string line) {
 }
 
 
-int getid () {
+int get_new_id () {
     /*
      * this function returns a new id from the file id.txt in the database
      */
@@ -104,4 +104,15 @@ void input() {
 
 void chioce(string s) {
     cout << "       " << s << endl;
+}
+
+
+
+void write_lines_to_file(string path, vector<string> &lines) {
+    fstream file(path, (ios::out | ios::trunc));
+    for(string &line : lines) {
+        file << line;
+        file << "\n";
+    }
+    file.close();
 }

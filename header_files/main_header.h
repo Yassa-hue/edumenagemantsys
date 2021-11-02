@@ -34,9 +34,27 @@ typedef unsigned long long ull;
 #define fast ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
 
 
-/*
- * userid is the id of the user that is using the app now
- * is_doctor is true if the user is a doctor, else false
- */
+#define MENTOR_WIDTH 100
+
+#define MAX_GRADE 10
+#define MIN_GRADE 0
+
+#define DATABASE_PATH string("./database/")
+#define DATABASE_FILE_TYPE string(".txt")
+
+
+#include "helper_functions.h"
+
+struct Answer {
+public:
+    int _student_id = -1, _grade = -1;
+    string answer{};
+};
+
+
+class Assignment_model;
+class Assignment_controler;
+class Assignment_view;
+
 
 #endif

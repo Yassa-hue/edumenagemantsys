@@ -14,7 +14,7 @@ courses >>> id doc_id
 
 
 
-ass >>> id doc_id course_id
+ass >>> id doc_id course_id number_of_answers
         ///> id doc_id course_id \n question
             user_id grade \n ans
 
