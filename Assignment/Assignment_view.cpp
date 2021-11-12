@@ -120,8 +120,8 @@ void Assignment_view::print_doctor_view() const {
 
     vector <string> _lines;
 
-    for (const auto & answer : answers) {
-        string _line = "Student ID : " + to_string(answer._student_id) + " | Grade : " + to_string(answer._grade);
+    for (const auto & [student_id, answer] : answers) {
+        string _line = "Student ID : " + to_string(student_id) + " | Grade : " + to_string(answer._grade);
         _lines.push_back(_line);
 
         _line = "Answer : " + answer.answer + "\n";
@@ -144,12 +144,12 @@ void Assignment_view::print_student_view(int _student_id) const {
 
     vector <string> _lines;
 
-    int answer_index = get_answer_of(_student_id);
-
-    if (answer_index == -1)
+    if (answers.find(_student_id) == answers.end()) {
+        cout << " ??????????? Sorry this Student has NO answer ؟؟؟؟؟؟؟؟؟؟؟" << endl;
         return;
+    }
 
-    Answer _answer = answers[answer_index];
+    Answer _answer = answers[_student_id];
 
     string _line = "Student ID : " + to_string(_answer._student_id) + " | Grade : " + to_string(_answer._student_id);
     _lines.push_back(_line);
@@ -196,22 +196,7 @@ Take_answer_block:
 
 
 
-/*
- * format : get_answer_of (Student ID)
- *
- * usage : returns the index of answer of a this student in the answers
- *  if not found it return -1
- */
 
-
-
-int Assignment_view::get_answer_of(int _student_id) const {
-    for (int answer_index = 0; answer_index < answers.size(); ++answer_index) {
-        if (answers[answer_index]._student_id == _student_id)
-            return answer_index;
-    }
-    return -1;
-}
 
 
 
@@ -222,20 +207,17 @@ int Assignment_view::get_answer_of(int _student_id) const {
  * usage : update the existing answer or append if it is new
  *      it is used only by the model as a signal
  */
-void Assignment_view::set_answer(Answer &answer) {
-    int answer_index = get_answer_of(answer._student_id);
+void Assignment_view::set_answer(Answer &_answer) {
     string line;
     vector <string> lines;
-    if (answer_index == -1) {
-        answers.push_back(answer);
+    if (answers.find(_answer) == answers.end()) {
         line = "You added a new answer";
         lines.push_back(line);
-    }
-    else {
-        line = "You updated answer of student ID (" + to_string(answer._student_id) + ")";
+    } else {
+        line = "You updated answer of student ID (" + to_string(_answer._student_id) + ")";
         lines.push_back(line);
-        answers[answer_index] = answer;
     }
+    answers[_answer._student_id] = _answer;
     print_in_format(lines);
 }
 
@@ -262,8 +244,7 @@ void Assignment_view::set_assignment_statement(string &new_assignment_statement)
  */
 
 void Assignment_view::set_grade(int _student_id, int grade) {
-    int answer_index = get_answer_of(_student_id);
-    answers[answer_index]._grade = grade;
+    answers[_student_id]._grade = grade;
 }
 
 

@@ -23,5 +23,9 @@ void chioce(string s);
 
 void write_lines_to_file(string path, vector<string> &lines);
 
+bool g(struct Answer &answer1, struct Answer &answer2);
+
+
+
 #endif //helper_functions
 

@@ -100,7 +100,7 @@ Answer Assignment_controler::get_answer_of(int _student_id) const {
  *
  * usage : gets all the answers by reference and const to be un changeable
  */
-const vector<Answer> & Assignment_controler::get_all_answers() const {
+const map<int, Answer, compare_answer_by_id> & Assignment_controler::get_all_answers() const {
     return assignment_model->get_all_answers();
 }
 
@@ -119,7 +119,7 @@ void Assignment_controler::set_answer(Answer _answer) {
     if (_answer.answer.empty())
         throw "The answer statement is INVALID :(";
 
-    assignment_model->append_new_answer(_answer);
+    assignment_model->set_new_answer(_answer);
 }
 
 

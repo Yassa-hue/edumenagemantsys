@@ -12,8 +12,8 @@ class Assignment_model{
 private:
 
     int id, doctor_id, course_id;
-    vector<Answer> answers;
-
+    // vector<Answer> answers;
+    map <int, Answer, compare_answer_by_id> answers;
 
     string assigment_db_file_path, assignment_statement;
     Assignment_view *assignment_view;
@@ -27,7 +27,7 @@ private:
 
 
     void
-        set_answer_of
+        change_answer_of
             (int _student_id, string _answer);
 
     void
@@ -36,25 +36,25 @@ private:
 
 
     void
-        append_new_answer
+        set_new_answer
             (Answer _student_answer);
 
+    Assignment_model();
 
 public:
 
     friend class Assignment_controler;
 
-    Assignment_model();
 
-    void
+
+    static Assignment_model *
         construct_old_model
             (int _id);
 
 
-
-    void
+    static Assignment_model *
         construct_new_model
-            (Assignment_view * _new_assignment_view, int _doctor_id, int _course_id, string _assignment_statement);
+            (int _doctor_id, int _course_id, string _assignment_statement);
 
 
     int
@@ -72,7 +72,7 @@ public:
     Answer
         get_answer_of(int _student_id) const;
 
-    const vector<Answer> &
+    const map <int, Answer, compare_answer_by_id> &
         get_all_answers() const;
 
     void

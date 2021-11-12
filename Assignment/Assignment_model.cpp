@@ -24,35 +24,47 @@ Assignment_model::Assignment_model() :
  *
  * usage : constructs model for an existing database file (fetch the db file)
  */
+Assignment_model *Assignment_model::construct_old_model(int _id) {
+    Assignment_model * old_model = new Assignment_model();
 
-void Assignment_model::construct_old_model(int _id) {
-
-    if (_id < 0)
+    if (_id < 0) {
+        delete old_model;
         throw "ID is out of range :(";
+    }
 
-    assigment_db_file_path = DATABASE_PATH + "assignments/" + to_string(_id) + DATABASE_FILE_TYPE;
+    old_model->assigment_db_file_path = DATABASE_PATH + "assignments/" + to_string(_id) + DATABASE_FILE_TYPE;
 
-    ifstream assignment_db_file(assigment_db_file_path);
+    ifstream assignment_db_file(old_model->assigment_db_file_path);
 
-    if (assignment_db_file.fail())
+    if (assignment_db_file.fail()) {
+        delete old_model;
         throw "The database file is not found :(";
+    }
+
+
     int number_of_answers{};
-    assignment_db_file >> id >> doctor_id >> course_id >> number_of_answers;
+    assignment_db_file >> old_model->id >> old_model->doctor_id >> old_model->course_id >> number_of_answers;
     assignment_db_file.ignore(100, '\n');
-    getline(assignment_db_file, assignment_statement);
+    getline(assignment_db_file, old_model->assignment_statement);
 
 
     for (int i = 0; i < number_of_answers; ++i) {
         Answer answer;
+
         assignment_db_file >> answer._student_id >> answer._grade;
         assignment_db_file.ignore(100, '\n');
         getline(assignment_db_file, answer.answer);
-        answers.push_back(answer);
+
+        old_model->answers[answer._student_id] = answer;
     }
 
     assignment_db_file.close();
 
+    return old_model;
 }
+
+
+
 
 
 
@@ -63,14 +75,22 @@ void Assignment_model::construct_old_model(int _id) {
  *
  * usage : constructs model and create the db file
  */
-void Assignment_model::construct_new_model(Assignment_view *_new_assignment_view, int _doctor_id, int _course_id, string _assignment_statement) {
-    id = get_new_id();
-    assigment_db_file_path = DATABASE_PATH + "assignments/" + to_string(id) + DATABASE_FILE_TYPE;
-    doctor_id = _doctor_id;
-    course_id = _course_id;
-    assignment_statement = _assignment_statement;
-    assignment_view = _new_assignment_view;
+Assignment_model *
+Assignment_model::construct_new_model(int _doctor_id, int _course_id, string _assignment_statement) {
+    Assignment_model *new_model = new Assignment_model();
+    new_model->id = get_new_id();
+    new_model->assigment_db_file_path = DATABASE_PATH + "assignments/" + to_string(new_model->id) + DATABASE_FILE_TYPE;
+    new_model->doctor_id = _doctor_id;
+    new_model->course_id = _course_id;
+    new_model->assignment_statement = _assignment_statement;
+    new_model->assignment_view = nullptr;
 }
+
+
+
+
+
+
 
 
 
@@ -141,12 +161,10 @@ const string & Assignment_model::get_assignment_statement() const {
  */
 
 Answer Assignment_model::get_answer_of(int _student_id) const {
-    for (const Answer &answer: answers) {
-        if (answer._student_id == _student_id)
-            return answer;
-    }
-
-    return Answer();
+    if (answers.find(_student_id) == answers.end())
+        return Answer();
+    else
+        return (answers[_student_id]);
 }
 
 
@@ -158,7 +176,7 @@ Answer Assignment_model::get_answer_of(int _student_id) const {
  *
  * usage : gets all the answers by reference and const to be un changeable
  */
-const vector<Answer> & Assignment_model::get_all_answers() const {
+const map <int, Answer> & Assignment_model::get_all_answers() const{
     return answers;
 }
 
@@ -202,20 +220,16 @@ void Assignment_model::set_assignemt_statement(string _assignment_statement) {
 
 
 /*
- * name : set_answer_of
+ * name : change_answer_of
  *
  * usage : it updates the answer of the student with id equals _student_id
  */
 
-void Assignment_model::set_answer_of(int _student_id, string _answer) {
-    for (Answer &answer: answers) {
-        if (answer._student_id == _student_id) {
-            (answer).answer = _answer;
-            assignment_view->set_answer(answer);
-            break;
-        }
-    }
-
+void Assignment_model::change_answer_of(int _student_id, string _answer) {
+    if (answers.find(_student_id) == answers.end())
+        throw "You don't have an Answer to update";
+    answers[_student_id].answer = _answer;
+    assignment_view->set_answer(answers[_student_id]);
 }
 
 
@@ -224,21 +238,22 @@ void Assignment_model::set_answer_of(int _student_id, string _answer) {
 
 
 /*
- * name : append_new_answer
+ * name : set_new_answer
  *
  * usage : it adds a new answer
  */
-void Assignment_model::append_new_answer(Answer _student_answer) {
-    if (_student_answer._student_id != -1 && !_student_answer.answer.empty()) {
-        answers.push_back(_student_answer);
-        assignment_view->set_answer(_student_answer);
-    }
+void Assignment_model::set_new_answer(Answer _student_answer) {
+    if (answers.find(_student_answer._student_id) != answers.end())
+        throw "You have an existing answer, Try to Update it instead";
+
+    answers[_student_answer._student_id] = _student_answer;
+    assignment_view->set_answer(_student_answer);
 }
 
 
 
 /*
- * name : search_for_student
+ * name : set_grade_of
  *
  * usage : sets the grade of student with ID equals _student_id
  */

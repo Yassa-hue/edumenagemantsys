@@ -6,29 +6,33 @@
 
 #IncludeRegexTransform: 
 
-/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_controler.h
-./Assignment_model.h
-/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_model.h
-
-/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_model.h
-./Assignment_view.h
-/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_view.h
-
-/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_view.cpp
-Assignment_view.h
-/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_view.h
-
-/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_view.h
-../header_files/main_header.h
-/home/yassatamer/CLionProjects/edumenagementsys/header_files/main_header.h
+/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_MVC.h
 ./Assignment_controler.h
-/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_controler.h
+/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_controler.h
+./Assignment_model.h
+/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_model.h
+./Assignment_view.h
+/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_view.h
 
-/home/yassatamer/CLionProjects/edumenagementsys/header_files/helper_functions.h
+/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_controler.h
+./Assignment_model.h
+/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_model.h
+
+/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_model.h
+./Assignment_view.h
+/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_view.h
+
+/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_view.h
+../header_files/main_header.h
+/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/header_files/main_header.h
+./Assignment_controler.h
+/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_controler.h
+
+/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/header_files/helper_functions.h
 main_header.h
-/home/yassatamer/CLionProjects/edumenagementsys/header_files/main_header.h
+/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/header_files/main_header.h
 
-/home/yassatamer/CLionProjects/edumenagementsys/header_files/main_header.h
+/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/header_files/main_header.h
 iostream
 -
 utility
@@ -36,5 +40,11 @@ utility
 bits/stdc++.h
 -
 helper_functions.h
-/home/yassatamer/CLionProjects/edumenagementsys/header_files/helper_functions.h
+/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/header_files/helper_functions.h
+
+/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/main.cpp
+./header_files/main_header.h
+/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/header_files/main_header.h
+./Assignment/Assignment_MVC.h
+/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_MVC.h
 

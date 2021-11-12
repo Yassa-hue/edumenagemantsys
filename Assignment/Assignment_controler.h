@@ -49,7 +49,7 @@ public:
     Answer
         get_answer_of(int _student_id) const;
 
-    const vector<Answer> &
+    const map<int, Answer, compare_answer_by_id> &
         get_all_answers() const;
 
 

@@ -28,13 +28,26 @@ private:
     Assignment_MVC(int _user_id, int _assignment_id, bool _is_doctor = true);
 
 
+    void
+        start_the_main_menu();
+
+
+    void
+        print_the_main_menu();
+
+
 public:
 
 
 
-    static void
+    static Assignment_MVC *
         new_assignment_mvc_constructor
-                (int _user_id, int _assignment_id, bool _is_doctor = true, Assignment_MVC * new_assignment_mvc = nullptr);
+                (int _user_id, int _assignment_id, bool _is_doctor = true);
+
+
+
+
+
 
 
     ~Assignment_MVC();

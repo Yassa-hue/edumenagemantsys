@@ -19,7 +19,7 @@ private:
 
     string assignment_statement;
 
-    vector <Answer> answers;
+    map<int, Answer, bool(*)(Answer, Answer)> answers(g);
 
     Assignment_controler * assignment_controler;
 
@@ -31,11 +31,6 @@ private:
         print_in_format
             (const vector <string> &_lines) const;
 
-
-
-    int
-        get_answer_of
-            (int _student_id) const;
 
 
     void

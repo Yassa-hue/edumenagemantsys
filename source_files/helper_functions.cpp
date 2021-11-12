@@ -116,3 +116,7 @@ void write_lines_to_file(string path, vector<string> &lines) {
     }
     file.close();
 }
+
+bool g(struct Answer &answer1, struct Answer &answer2) {
+    return (answer1._student_id < answer2._student_id);
+}

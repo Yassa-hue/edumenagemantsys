@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug"/>
+				<Option working_dir="/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug"/>
+				<Option working_dir="/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug"/>
+				<Option working_dir="/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edumenagementsys">
-				<Option output="/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug/edumenagementsys" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug"/>
+				<Option output="/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/edumenagementsys" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -53,15 +53,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 edumenagementsys"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 edumenagementsys"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edumenagementsys/fast">
-				<Option output="/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug/edumenagementsys" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug"/>
+				<Option output="/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/edumenagementsys" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -75,47 +75,47 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 edumenagementsys/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/yassatamer/CLionProjects/edumenagementsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 edumenagementsys/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_MVC.cpp">
+		<Unit filename="/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_MVC.cpp">
 			<Option target="edumenagementsys"/>
 		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_MVC.h">
+		<Unit filename="/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_MVC.h">
 			<Option target="edumenagementsys"/>
 		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_controler.cpp">
+		<Unit filename="/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_controler.cpp">
 			<Option target="edumenagementsys"/>
 		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_controler.h">
+		<Unit filename="/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_controler.h">
 			<Option target="edumenagementsys"/>
 		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_model.cpp">
+		<Unit filename="/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_model.cpp">
 			<Option target="edumenagementsys"/>
 		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_model.h">
+		<Unit filename="/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_model.h">
 			<Option target="edumenagementsys"/>
 		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_view.cpp">
+		<Unit filename="/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_view.cpp">
 			<Option target="edumenagementsys"/>
 		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/Assignment/Assignment_view.h">
+		<Unit filename="/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_view.h">
 			<Option target="edumenagementsys"/>
 		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/header_files/helper_functions.h">
+		<Unit filename="/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/header_files/helper_functions.h">
 			<Option target="edumenagementsys"/>
 		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/main.cpp">
+		<Unit filename="/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/main.cpp">
 			<Option target="edumenagementsys"/>
 		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/source_files/helper_functions.cpp">
+		<Unit filename="/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/source_files/helper_functions.cpp">
 			<Option target="edumenagementsys"/>
 		</Unit>
-		<Unit filename="/home/yassatamer/CLionProjects/edumenagementsys/CMakeLists.txt">
+		<Unit filename="/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

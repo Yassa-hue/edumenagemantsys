@@ -49,7 +49,20 @@ struct Answer {
 public:
     int _student_id = -1, _grade = -1;
     string answer{};
+    bool operator<(Answer a) {
+        return _student_id < a._student_id;
+    }
 };
+
+
+
+
+struct compare_answer_by_id {
+    bool operator()(const Answer& a1, const Answer& a2) const {
+        return a1._student_id < a2._student_id;
+    }
+};
+
 
 
 class Assignment_model;
