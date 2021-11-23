@@ -53,10 +53,10 @@ RM = /snap/clion/169/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/yassa/CLionProjects/eduMngSys/edumenagemantsys
+CMAKE_SOURCE_DIR = /home/yassa/CLionProjects/edumenagemantsys
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug
+CMAKE_BINARY_DIR = /home/yassa/CLionProjects/edumenagemantsys/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/edumenagementsys.dir/depend.make
@@ -68,103 +68,58 @@ include CMakeFiles/edumenagementsys.dir/flags.make
 
 CMakeFiles/edumenagementsys.dir/main.cpp.o: CMakeFiles/edumenagementsys.dir/flags.make
 CMakeFiles/edumenagementsys.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/edumenagementsys.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/edumenagementsys.dir/main.cpp.o -c /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yassa/CLionProjects/edumenagemantsys/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/edumenagementsys.dir/main.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/edumenagementsys.dir/main.cpp.o -c /home/yassa/CLionProjects/edumenagemantsys/main.cpp
 
 CMakeFiles/edumenagementsys.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/edumenagementsys.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/main.cpp > CMakeFiles/edumenagementsys.dir/main.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yassa/CLionProjects/edumenagemantsys/main.cpp > CMakeFiles/edumenagementsys.dir/main.cpp.i
 
 CMakeFiles/edumenagementsys.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/edumenagementsys.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/main.cpp -o CMakeFiles/edumenagementsys.dir/main.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yassa/CLionProjects/edumenagemantsys/main.cpp -o CMakeFiles/edumenagementsys.dir/main.cpp.s
 
 CMakeFiles/edumenagementsys.dir/source_files/helper_functions.cpp.o: CMakeFiles/edumenagementsys.dir/flags.make
 CMakeFiles/edumenagementsys.dir/source_files/helper_functions.cpp.o: ../source_files/helper_functions.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/edumenagementsys.dir/source_files/helper_functions.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/edumenagementsys.dir/source_files/helper_functions.cpp.o -c /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/source_files/helper_functions.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yassa/CLionProjects/edumenagemantsys/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/edumenagementsys.dir/source_files/helper_functions.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/edumenagementsys.dir/source_files/helper_functions.cpp.o -c /home/yassa/CLionProjects/edumenagemantsys/source_files/helper_functions.cpp
 
 CMakeFiles/edumenagementsys.dir/source_files/helper_functions.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/edumenagementsys.dir/source_files/helper_functions.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/source_files/helper_functions.cpp > CMakeFiles/edumenagementsys.dir/source_files/helper_functions.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yassa/CLionProjects/edumenagemantsys/source_files/helper_functions.cpp > CMakeFiles/edumenagementsys.dir/source_files/helper_functions.cpp.i
 
 CMakeFiles/edumenagementsys.dir/source_files/helper_functions.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/edumenagementsys.dir/source_files/helper_functions.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/source_files/helper_functions.cpp -o CMakeFiles/edumenagementsys.dir/source_files/helper_functions.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yassa/CLionProjects/edumenagemantsys/source_files/helper_functions.cpp -o CMakeFiles/edumenagementsys.dir/source_files/helper_functions.cpp.s
 
-CMakeFiles/edumenagementsys.dir/Assignment/Assignment_view.cpp.o: CMakeFiles/edumenagementsys.dir/flags.make
-CMakeFiles/edumenagementsys.dir/Assignment/Assignment_view.cpp.o: ../Assignment/Assignment_view.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/edumenagementsys.dir/Assignment/Assignment_view.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/edumenagementsys.dir/Assignment/Assignment_view.cpp.o -c /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_view.cpp
+CMakeFiles/edumenagementsys.dir/database_class/Database.cpp.o: CMakeFiles/edumenagementsys.dir/flags.make
+CMakeFiles/edumenagementsys.dir/database_class/Database.cpp.o: ../database_class/Database.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yassa/CLionProjects/edumenagemantsys/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/edumenagementsys.dir/database_class/Database.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/edumenagementsys.dir/database_class/Database.cpp.o -c /home/yassa/CLionProjects/edumenagemantsys/database_class/Database.cpp
 
-CMakeFiles/edumenagementsys.dir/Assignment/Assignment_view.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/edumenagementsys.dir/Assignment/Assignment_view.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_view.cpp > CMakeFiles/edumenagementsys.dir/Assignment/Assignment_view.cpp.i
+CMakeFiles/edumenagementsys.dir/database_class/Database.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/edumenagementsys.dir/database_class/Database.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yassa/CLionProjects/edumenagemantsys/database_class/Database.cpp > CMakeFiles/edumenagementsys.dir/database_class/Database.cpp.i
 
-CMakeFiles/edumenagementsys.dir/Assignment/Assignment_view.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/edumenagementsys.dir/Assignment/Assignment_view.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_view.cpp -o CMakeFiles/edumenagementsys.dir/Assignment/Assignment_view.cpp.s
-
-CMakeFiles/edumenagementsys.dir/Assignment/Assignment_model.cpp.o: CMakeFiles/edumenagementsys.dir/flags.make
-CMakeFiles/edumenagementsys.dir/Assignment/Assignment_model.cpp.o: ../Assignment/Assignment_model.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/edumenagementsys.dir/Assignment/Assignment_model.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/edumenagementsys.dir/Assignment/Assignment_model.cpp.o -c /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_model.cpp
-
-CMakeFiles/edumenagementsys.dir/Assignment/Assignment_model.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/edumenagementsys.dir/Assignment/Assignment_model.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_model.cpp > CMakeFiles/edumenagementsys.dir/Assignment/Assignment_model.cpp.i
-
-CMakeFiles/edumenagementsys.dir/Assignment/Assignment_model.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/edumenagementsys.dir/Assignment/Assignment_model.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_model.cpp -o CMakeFiles/edumenagementsys.dir/Assignment/Assignment_model.cpp.s
-
-CMakeFiles/edumenagementsys.dir/Assignment/Assignment_controler.cpp.o: CMakeFiles/edumenagementsys.dir/flags.make
-CMakeFiles/edumenagementsys.dir/Assignment/Assignment_controler.cpp.o: ../Assignment/Assignment_controler.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/edumenagementsys.dir/Assignment/Assignment_controler.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/edumenagementsys.dir/Assignment/Assignment_controler.cpp.o -c /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_controler.cpp
-
-CMakeFiles/edumenagementsys.dir/Assignment/Assignment_controler.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/edumenagementsys.dir/Assignment/Assignment_controler.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_controler.cpp > CMakeFiles/edumenagementsys.dir/Assignment/Assignment_controler.cpp.i
-
-CMakeFiles/edumenagementsys.dir/Assignment/Assignment_controler.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/edumenagementsys.dir/Assignment/Assignment_controler.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_controler.cpp -o CMakeFiles/edumenagementsys.dir/Assignment/Assignment_controler.cpp.s
-
-CMakeFiles/edumenagementsys.dir/Assignment/Assignment_MVC.cpp.o: CMakeFiles/edumenagementsys.dir/flags.make
-CMakeFiles/edumenagementsys.dir/Assignment/Assignment_MVC.cpp.o: ../Assignment/Assignment_MVC.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/edumenagementsys.dir/Assignment/Assignment_MVC.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/edumenagementsys.dir/Assignment/Assignment_MVC.cpp.o -c /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_MVC.cpp
-
-CMakeFiles/edumenagementsys.dir/Assignment/Assignment_MVC.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/edumenagementsys.dir/Assignment/Assignment_MVC.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_MVC.cpp > CMakeFiles/edumenagementsys.dir/Assignment/Assignment_MVC.cpp.i
-
-CMakeFiles/edumenagementsys.dir/Assignment/Assignment_MVC.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/edumenagementsys.dir/Assignment/Assignment_MVC.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_MVC.cpp -o CMakeFiles/edumenagementsys.dir/Assignment/Assignment_MVC.cpp.s
+CMakeFiles/edumenagementsys.dir/database_class/Database.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/edumenagementsys.dir/database_class/Database.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yassa/CLionProjects/edumenagemantsys/database_class/Database.cpp -o CMakeFiles/edumenagementsys.dir/database_class/Database.cpp.s
 
 # Object files for target edumenagementsys
 edumenagementsys_OBJECTS = \
 "CMakeFiles/edumenagementsys.dir/main.cpp.o" \
 "CMakeFiles/edumenagementsys.dir/source_files/helper_functions.cpp.o" \
-"CMakeFiles/edumenagementsys.dir/Assignment/Assignment_view.cpp.o" \
-"CMakeFiles/edumenagementsys.dir/Assignment/Assignment_model.cpp.o" \
-"CMakeFiles/edumenagementsys.dir/Assignment/Assignment_controler.cpp.o" \
-"CMakeFiles/edumenagementsys.dir/Assignment/Assignment_MVC.cpp.o"
+"CMakeFiles/edumenagementsys.dir/database_class/Database.cpp.o"
 
 # External object files for target edumenagementsys
 edumenagementsys_EXTERNAL_OBJECTS =
 
 edumenagementsys: CMakeFiles/edumenagementsys.dir/main.cpp.o
 edumenagementsys: CMakeFiles/edumenagementsys.dir/source_files/helper_functions.cpp.o
-edumenagementsys: CMakeFiles/edumenagementsys.dir/Assignment/Assignment_view.cpp.o
-edumenagementsys: CMakeFiles/edumenagementsys.dir/Assignment/Assignment_model.cpp.o
-edumenagementsys: CMakeFiles/edumenagementsys.dir/Assignment/Assignment_controler.cpp.o
-edumenagementsys: CMakeFiles/edumenagementsys.dir/Assignment/Assignment_MVC.cpp.o
+edumenagementsys: CMakeFiles/edumenagementsys.dir/database_class/Database.cpp.o
 edumenagementsys: CMakeFiles/edumenagementsys.dir/build.make
 edumenagementsys: CMakeFiles/edumenagementsys.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable edumenagementsys"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/yassa/CLionProjects/edumenagemantsys/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable edumenagementsys"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/edumenagementsys.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -176,6 +131,6 @@ CMakeFiles/edumenagementsys.dir/clean:
 .PHONY : CMakeFiles/edumenagementsys.dir/clean
 
 CMakeFiles/edumenagementsys.dir/depend:
-	cd /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/yassa/CLionProjects/eduMngSys/edumenagemantsys /home/yassa/CLionProjects/eduMngSys/edumenagemantsys /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/CMakeFiles/edumenagementsys.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/yassa/CLionProjects/edumenagemantsys/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/yassa/CLionProjects/edumenagemantsys /home/yassa/CLionProjects/edumenagemantsys /home/yassa/CLionProjects/edumenagemantsys/cmake-build-debug /home/yassa/CLionProjects/edumenagemantsys/cmake-build-debug /home/yassa/CLionProjects/edumenagemantsys/cmake-build-debug/CMakeFiles/edumenagementsys.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/edumenagementsys.dir/depend
 

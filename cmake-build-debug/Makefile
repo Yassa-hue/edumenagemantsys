@@ -57,10 +57,10 @@ RM = /snap/clion/169/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/yassa/CLionProjects/eduMngSys/edumenagemantsys
+CMAKE_SOURCE_DIR = /home/yassa/CLionProjects/edumenagemantsys
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug
+CMAKE_BINARY_DIR = /home/yassa/CLionProjects/edumenagemantsys/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/CMakeFiles /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yassa/CLionProjects/edumenagemantsys/cmake-build-debug/CMakeFiles /home/yassa/CLionProjects/edumenagemantsys/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yassa/CLionProjects/edumenagemantsys/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -129,101 +129,29 @@ edumenagementsys/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/build
 .PHONY : edumenagementsys/fast
 
-Assignment/Assignment_MVC.o: Assignment/Assignment_MVC.cpp.o
-.PHONY : Assignment/Assignment_MVC.o
+database_class/Database.o: database_class/Database.cpp.o
+.PHONY : database_class/Database.o
 
 # target to build an object file
-Assignment/Assignment_MVC.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_MVC.cpp.o
-.PHONY : Assignment/Assignment_MVC.cpp.o
+database_class/Database.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/database_class/Database.cpp.o
+.PHONY : database_class/Database.cpp.o
 
-Assignment/Assignment_MVC.i: Assignment/Assignment_MVC.cpp.i
-.PHONY : Assignment/Assignment_MVC.i
-
-# target to preprocess a source file
-Assignment/Assignment_MVC.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_MVC.cpp.i
-.PHONY : Assignment/Assignment_MVC.cpp.i
-
-Assignment/Assignment_MVC.s: Assignment/Assignment_MVC.cpp.s
-.PHONY : Assignment/Assignment_MVC.s
-
-# target to generate assembly for a file
-Assignment/Assignment_MVC.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_MVC.cpp.s
-.PHONY : Assignment/Assignment_MVC.cpp.s
-
-Assignment/Assignment_controler.o: Assignment/Assignment_controler.cpp.o
-.PHONY : Assignment/Assignment_controler.o
-
-# target to build an object file
-Assignment/Assignment_controler.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_controler.cpp.o
-.PHONY : Assignment/Assignment_controler.cpp.o
-
-Assignment/Assignment_controler.i: Assignment/Assignment_controler.cpp.i
-.PHONY : Assignment/Assignment_controler.i
+database_class/Database.i: database_class/Database.cpp.i
+.PHONY : database_class/Database.i
 
 # target to preprocess a source file
-Assignment/Assignment_controler.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_controler.cpp.i
-.PHONY : Assignment/Assignment_controler.cpp.i
+database_class/Database.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/database_class/Database.cpp.i
+.PHONY : database_class/Database.cpp.i
 
-Assignment/Assignment_controler.s: Assignment/Assignment_controler.cpp.s
-.PHONY : Assignment/Assignment_controler.s
-
-# target to generate assembly for a file
-Assignment/Assignment_controler.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_controler.cpp.s
-.PHONY : Assignment/Assignment_controler.cpp.s
-
-Assignment/Assignment_model.o: Assignment/Assignment_model.cpp.o
-.PHONY : Assignment/Assignment_model.o
-
-# target to build an object file
-Assignment/Assignment_model.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_model.cpp.o
-.PHONY : Assignment/Assignment_model.cpp.o
-
-Assignment/Assignment_model.i: Assignment/Assignment_model.cpp.i
-.PHONY : Assignment/Assignment_model.i
-
-# target to preprocess a source file
-Assignment/Assignment_model.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_model.cpp.i
-.PHONY : Assignment/Assignment_model.cpp.i
-
-Assignment/Assignment_model.s: Assignment/Assignment_model.cpp.s
-.PHONY : Assignment/Assignment_model.s
+database_class/Database.s: database_class/Database.cpp.s
+.PHONY : database_class/Database.s
 
 # target to generate assembly for a file
-Assignment/Assignment_model.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_model.cpp.s
-.PHONY : Assignment/Assignment_model.cpp.s
-
-Assignment/Assignment_view.o: Assignment/Assignment_view.cpp.o
-.PHONY : Assignment/Assignment_view.o
-
-# target to build an object file
-Assignment/Assignment_view.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_view.cpp.o
-.PHONY : Assignment/Assignment_view.cpp.o
-
-Assignment/Assignment_view.i: Assignment/Assignment_view.cpp.i
-.PHONY : Assignment/Assignment_view.i
-
-# target to preprocess a source file
-Assignment/Assignment_view.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_view.cpp.i
-.PHONY : Assignment/Assignment_view.cpp.i
-
-Assignment/Assignment_view.s: Assignment/Assignment_view.cpp.s
-.PHONY : Assignment/Assignment_view.s
-
-# target to generate assembly for a file
-Assignment/Assignment_view.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/Assignment/Assignment_view.cpp.s
-.PHONY : Assignment/Assignment_view.cpp.s
+database_class/Database.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/database_class/Database.cpp.s
+.PHONY : database_class/Database.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -282,18 +210,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... edumenagementsys"
-	@echo "... Assignment/Assignment_MVC.o"
-	@echo "... Assignment/Assignment_MVC.i"
-	@echo "... Assignment/Assignment_MVC.s"
-	@echo "... Assignment/Assignment_controler.o"
-	@echo "... Assignment/Assignment_controler.i"
-	@echo "... Assignment/Assignment_controler.s"
-	@echo "... Assignment/Assignment_model.o"
-	@echo "... Assignment/Assignment_model.i"
-	@echo "... Assignment/Assignment_model.s"
-	@echo "... Assignment/Assignment_view.o"
-	@echo "... Assignment/Assignment_view.i"
-	@echo "... Assignment/Assignment_view.s"
+	@echo "... database_class/Database.o"
+	@echo "... database_class/Database.i"
+	@echo "... database_class/Database.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

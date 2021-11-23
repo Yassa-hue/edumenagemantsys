@@ -1,8 +1,0 @@
-8 2 7 3
-changed statment
-10 10
-yassa
-9 -1
-fake answer
-5 -1
-new answer added

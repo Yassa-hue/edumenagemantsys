@@ -8,12 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_MVC.cpp" "/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/CMakeFiles/edumenagementsys.dir/Assignment/Assignment_MVC.cpp.o"
-  "/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_controler.cpp" "/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/CMakeFiles/edumenagementsys.dir/Assignment/Assignment_controler.cpp.o"
-  "/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_model.cpp" "/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/CMakeFiles/edumenagementsys.dir/Assignment/Assignment_model.cpp.o"
-  "/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/Assignment/Assignment_view.cpp" "/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/CMakeFiles/edumenagementsys.dir/Assignment/Assignment_view.cpp.o"
-  "/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/main.cpp" "/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/CMakeFiles/edumenagementsys.dir/main.cpp.o"
-  "/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/source_files/helper_functions.cpp" "/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/CMakeFiles/edumenagementsys.dir/source_files/helper_functions.cpp.o"
+  "/home/yassa/CLionProjects/edumenagemantsys/database_class/Database.cpp" "/home/yassa/CLionProjects/edumenagemantsys/cmake-build-debug/CMakeFiles/edumenagementsys.dir/database_class/Database.cpp.o"
+  "/home/yassa/CLionProjects/edumenagemantsys/main.cpp" "/home/yassa/CLionProjects/edumenagemantsys/cmake-build-debug/CMakeFiles/edumenagementsys.dir/main.cpp.o"
+  "/home/yassa/CLionProjects/edumenagemantsys/source_files/helper_functions.cpp" "/home/yassa/CLionProjects/edumenagemantsys/cmake-build-debug/CMakeFiles/edumenagementsys.dir/source_files/helper_functions.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

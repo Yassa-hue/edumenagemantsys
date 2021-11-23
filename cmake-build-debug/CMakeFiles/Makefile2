@@ -54,10 +54,10 @@ RM = /snap/clion/169/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/yassa/CLionProjects/eduMngSys/edumenagemantsys
+CMAKE_SOURCE_DIR = /home/yassa/CLionProjects/edumenagemantsys
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug
+CMAKE_BINARY_DIR = /home/yassa/CLionProjects/edumenagemantsys/cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -81,14 +81,14 @@ clean: CMakeFiles/edumenagementsys.dir/clean
 CMakeFiles/edumenagementsys.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/edumenagementsys.dir/build.make CMakeFiles/edumenagementsys.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target edumenagementsys"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yassa/CLionProjects/edumenagemantsys/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4 "Built target edumenagementsys"
 .PHONY : CMakeFiles/edumenagementsys.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/edumenagementsys.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yassa/CLionProjects/edumenagemantsys/cmake-build-debug/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/edumenagementsys.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yassa/CLionProjects/eduMngSys/edumenagemantsys/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yassa/CLionProjects/edumenagemantsys/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/edumenagementsys.dir/rule
 
 # Convenience name for target.

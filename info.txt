@@ -29,6 +29,34 @@ ass >>> id doc_id course_id number_of_answers
 
 
 
+USER : id | name | email | password | is_doctor
+        ^
+        ------------------------------------------|
+                                    |             |
+USER_COURSE_REL : id | course_id | user_id   -----|
+                          |                  |
+          -----------------                  |
+          v                                  |
+COURSE : id | code                           |
+          ^                                  |
+          -----------                        |
+                    |                        |
+ASSIGNMENT : id | course_id | statement      |
+              ^                              |
+              |              -----------------
+              |              |
+ANSWER : assignment_id | user_id | grade | statement
+
+
+
+
+
+
+
+
+
+
+
 
 
 
